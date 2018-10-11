@@ -48,12 +48,12 @@ public class VisitaAtencion {
         this.pesoPromedio = pesoPromedio;
     }
 
-    public Tratamiento getTramiento() {
+    public Tratamiento getTratamiento() {
         return tratamiento;
     }
 
-    public void setTramiento(Tratamiento tramiento) {
-        this.tratamiento = tramiento;
+    public void setTramiento(Tratamiento tratamiento) {
+        this.tratamiento = tratamiento;
     }
     
     
