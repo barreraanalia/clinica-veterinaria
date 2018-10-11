@@ -15,13 +15,13 @@ public class VisitaAtencion {
     private Mascota mascota;
     private LocalDate fechaVisita;
     private double pesoPromedio;
-    private Tratamiento tramiento;
+    private Tratamiento tratamiento;
 
     public VisitaAtencion(Mascota mascota, LocalDate fechaVisita, double pesoPromedio, Tratamiento tramiento) {
         this.mascota = mascota;
         this.fechaVisita = fechaVisita;
         this.pesoPromedio = pesoPromedio;
-        this.tramiento = tramiento;
+        this.tratamiento = tramiento;
     }
 
     public Mascota getMascota() {
@@ -49,11 +49,11 @@ public class VisitaAtencion {
     }
 
     public Tratamiento getTramiento() {
-        return tramiento;
+        return tratamiento;
     }
 
     public void setTramiento(Tratamiento tramiento) {
-        this.tramiento = tramiento;
+        this.tratamiento = tramiento;
     }
     
     
