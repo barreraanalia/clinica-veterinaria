@@ -13,10 +13,10 @@ public class Tratamiento {
     private int codigoTratamiento;
     private String tipo;
     private String descripcion;
-    private int importe;
+    private float importe;
     private boolean activo;
 
-    public Tratamiento(int codigoTratamiento, String tipo, String descripcion, int importe, boolean activo) {
+    public Tratamiento(int codigoTratamiento, String tipo, String descripcion, float importe, boolean activo) {
         this.codigoTratamiento = codigoTratamiento;
         this.tipo = tipo;
         this.descripcion = descripcion;
@@ -48,11 +48,11 @@ public class Tratamiento {
         this.descripcion = descripcion;
     }
 
-    public int getImporte() {
+    public float getImporte() {
         return importe;
     }
 
-    public void setImporte(int importe) {
+    public void setImporte(float importe) {
         this.importe = importe;
     }
 
