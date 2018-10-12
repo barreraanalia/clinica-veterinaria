@@ -23,9 +23,12 @@ import java.util.logging.Logger;
 public class MascotaData {
     private Connection connection = null;
 
-public MascotaData (Conexion conexion) throws SQLException{
-    
-    connection = conexion.getConexion();
+public MascotaData (Conexion conexion) {
+    try {
+            connection = conexion.getConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(MascotaData.class.getName()).log(Level.SEVERE, null, ex);
+        }
     
 }
 
