@@ -96,7 +96,7 @@ public List<Cliente> obtenerCliente(){
             Cliente cliente;
             while(resultSet.next()){
                 cliente = new Cliente();
-                cliente.setId(resultSet.getInt("id"));
+                cliente.setId(resultSet.getInt("idcliente")); 
                 cliente.setNombreApellido(resultSet.getString("nombrecompleto"));
                 cliente.setDireccion("direccion");
                 
@@ -114,6 +114,52 @@ public List<Cliente> obtenerCliente(){
         return clientes;
     }
 
+public void actualizarCliente(Cliente cliente){
+    try {
+        String sql = "UPDATE FROM cliente SET nombrecompleto= ?,telefono= ?,direccion= ?,personalternativa= ?,documento= ? WHERE idcliente=?";
+        PreparedStatement statement = conecction.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        statement.setString(1,cliente.getNombreApellido());
+        statement.setString(2,cliente.getDireccion());
+        statement.setString(3,cliente.getDireccion());
+        statement.setString(4,cliente.getPersonAlternativa());
+        statement.setLong(5,cliente.getDocumento());
+        statement.setInt(6, cliente.getId());
+        statement.executeUpdate();
+    } catch (SQLException ex) {
+        Logger.getLogger(ClienteData.class.getName()).log(Level.SEVERE, null, ex);
+    }
+}
+    public Cliente buscarCliente (int id){
+    Cliente cliente= null;
+        try {
+        
+        String sql = "SELECT * FROM cliente WHERE idcliente=?;";
+        PreparedStatement statement = conecction.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        statement.setInt(1, id);
+        
+ 
+        ResultSet resultSet=statement.executeQuery();
+        while(resultSet.next()){
+                cliente = new Cliente();
+                cliente.setId(resultSet.getInt("idcliente"));
+                cliente.setNombreApellido(resultSet.getString("nombrecompleto"));
+                cliente.setDireccion(resultSet.getString("direccion"));
+                cliente.setTelefono(resultSet.getString("telefono"));
+                cliente.setDocumento(resultSet.getLong("documento"));
+                cliente.setPersonAlternativa(resultSet.getString("personalternativa"));
+                
+
+                
+            }      
+            statement.close();
+        
+       
+    } catch (SQLException ex) {
+        Logger.getLogger(ClienteData.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        return cliente; 
+    }
+    
 
 
 }
