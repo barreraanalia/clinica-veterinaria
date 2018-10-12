@@ -33,28 +33,46 @@ public MascotaData (Conexion conexion) {
 }
 
     
- public void  guardarMascota(Mascota mascota){
-     String sql = "INSERT INTO mascota (especie,raza,colorPelo,sexo,alias,feNac,codigo,idcliente) VALUES (?,?,?,?,?,?,?,?,?);";
-     
-     
-     
-     
+  public void  guardarMascota(Mascota mascota){
         try {
-         PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-        
-        statement.setString(1, mascota.getEspecie());
-        statement.setString(2, mascota.getRaza());
-        statement.setString(3, mascota.getColorPelo());
-        statement.setString(4, mascota.getSexo());
-        statement.setString(5, mascota.getAlias());
-        statement.setDate(6, Date.valueOf(mascota.getFeNac()));
-        statement.setInt(7, mascota.getCodigo());
-        statement.setInt(8,mascota.getCliente().getId() );
+            String sql = "INSERT INTO mascota (especie,raza,colorPelo,sexo,alias,fechanacimiento,codigo,idcliente) VALUES (?,?,?,?,?,?,?,?);";
+            
+            
+            PreparedStatement statement = null;
+            
+            try {
+                statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                
+                statement.setString(1, mascota.getEspecie());
+                statement.setString(2, mascota.getRaza());
+                statement.setString(3, mascota.getColorPelo());
+                statement.setString(4, mascota.getSexo());
+                statement.setString(5, mascota.getAlias());
+                statement.setDate(6, Date.valueOf(mascota.getFeNac()));
+                statement.setInt(7, mascota.getCodigo());
+                statement.setInt(8,mascota.getCliente().getId() );
+            } catch (SQLException ex) {
+                Logger.getLogger(MascotaData.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            statement.executeUpdate();
+            
+            ResultSet rs = statement.getGeneratedKeys();
+            
+            try {
+                if (rs.next()) {
+                    mascota.setId(rs.getInt(1));
+                } else {
+                    System.out.println("No se pudo obtener el id luego de insertar una mascota");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(MascotaData.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(MascotaData.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-            
         
  }
   public List<Mascota> obtenerMascota(){
