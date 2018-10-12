@@ -36,7 +36,7 @@ private Connection conecction= null;
    
     
     public void guardarCliente (Cliente cliente){
-        String sql =  "INSERT into cliente (nombrecompleto,telefono,direccion,personalternativa,documento) VALUES (?,?,?,?,?,?)";
+        String sql =  "INSERT into cliente (nombrecompleto,telefono,direccion,personalternativa,documento) VALUES (?,?,?,?,?)";
         
     try {
         PreparedStatement statement = conecction.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
