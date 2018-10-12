@@ -16,11 +16,11 @@ public class Cliente {
  private long documento;
  private ArrayList <Mascota> mascota = new ArrayList<>();
  
- private int id=-1;
+ private int idcliente=-1;
  
 
-    public Cliente(int id, String nombreApellido, String telefono, String direccion, String personAlternativa, long documento, Mascota mascota) {
-        this.id = id;
+    public Cliente(int idcliente, String nombreApellido, String telefono, String direccion, String personAlternativa, long documento, Mascota mascota) {
+        this.idcliente = idcliente;
         this.nombreApellido = nombreApellido;
         this.telefono = telefono;
         this.direccion = direccion;
@@ -39,7 +39,7 @@ public class Cliente {
 
     
     Cliente() {
-        this.id = id;
+        this.idcliente = idcliente;
     }
 
     
@@ -93,8 +93,8 @@ public class Cliente {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int idcliente) {
+        this.idcliente = idcliente;
     }
 
  public void agregarMascota (Mascota mascotas){
