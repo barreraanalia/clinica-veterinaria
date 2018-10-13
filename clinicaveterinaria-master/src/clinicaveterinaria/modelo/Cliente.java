@@ -90,7 +90,7 @@ public class Cliente {
 
    
     public int getId() {
-        return id;
+        return idcliente;
     }
 
     public void setId(int idcliente) {

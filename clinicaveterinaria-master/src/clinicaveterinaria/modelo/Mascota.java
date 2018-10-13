@@ -16,7 +16,7 @@ import java.time.LocalDate;
  */
 public class Mascota {
     private String especie,raza,colorPelo,sexo,alias;
-    private LocalDate feNac;
+    private LocalDate fechaNacimiento;
     private double pesoPromedio;
     private int codigo;
     private Cliente cliente;
@@ -28,7 +28,7 @@ public class Mascota {
         this.colorPelo = colorPelo;
         this.sexo = sexo;
         this.alias = alias;
-        this.feNac = feNac;
+        this.fechaNacimiento = feNac;
         this.codigo = codigo;
         this.cliente = cliente;
     }
@@ -78,12 +78,12 @@ public class Mascota {
         this.alias = alias;
     }
 
-    public LocalDate getFeNac() {
-        return feNac;
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
     public void setFeNac(LocalDate feNac) {
-        this.feNac = feNac;
+        this.fechaNacimiento = feNac;
     }
 
    
