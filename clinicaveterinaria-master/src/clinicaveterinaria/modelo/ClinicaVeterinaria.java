@@ -39,13 +39,15 @@ public class ClinicaVeterinaria {
                  
         
             MascotaData mascotadata = new MascotaData (conexion);
+            Mascota mascota5 = new Mascota("gato","comun","negro","macho","mancha",LocalDate.of(2003, 2, 15),0001,cliente3);
+            Mascota mascota6 = new Mascota("gato","comun","negro","macho","vaca",LocalDate.of(2003, 2, 15),0001,cliente3);
             mascotadata.guardarMascota(mascota);
             // clientes.agregarMascota(mascota);
             // clientes.agregarMascota(mascota2);
             // clientes.agregarMascota(mascota3);
             // mascotadata.guardarMascota(mascota);
             // clientes.clienteMascotas();
-            //clientedata.borrarCliente(1);
+            clientedata.borrarCliente(1);
             
             //  System.out.println("el cliente de id 3 es: "+clientedata.buscarCliente(3).getNombreApellido());
             /*
@@ -60,19 +62,23 @@ public class ClinicaVeterinaria {
             //  });
             
             */
+            
             TratamientoData ttdata = new TratamientoData(conexion);
-            Tratamiento trata = new Tratamiento(0001, "corte de pelo", "el perro tenia muchas pulgax", 150.75, true, 2);
+            Tratamiento trata = new Tratamiento(0001, "corte de pelo", "el perro tenia muchas pulgas", 150.75, true,2);
             Tratamiento trata1 = new Tratamiento(0002, "corte de pelo", "no me gustaba su pelaje", 150.75, true);
             //Tratamiento trata3 = new Tratamiento(0002, "corte de pelo", "no me gustaba su pelaje", 190.50, true);
-            Tratamiento trata3 = new Tratamiento(21, "castracion", "cualquier cosa", 250.25, false);
+            Tratamiento trata3 = new Tratamiento(21, "castracion", "cualquier cosa", 250.25, true);
             //Tratamiento trata4 = new Tratamiento("corte de pelo", 25, 50.99, true, "el perro tenia muchas pulgas", 2);
-            //ttdata.guardarTratamiento(trata3);
+            Tratamiento trata4 = new Tratamiento(0003, "colocado de inyeccion", "el perro tenia muchas garrapatas", 110.73, true,2);
+            ttdata.guardarTratamiento(trata3);
             ttdata.actualizarTratamiento(trata);
-            //ttdata.obtenerTratamiento();
+            ttdata.obtenerTratamiento();
             VisitaAtencionData visitadata = new VisitaAtencionData(conexion);
-            VisitaAtencion visita = new VisitaAtencion(2, 3, "pulgas", LocalDate.of(2003, 5, 15), 7.5);
-            //visitadata.guardarVisita(visita);
-      
+            VisitaAtencion visita = new VisitaAtencion(2, 3, "garrapatas", LocalDate.of(2003, 5, 15), 7.5);
+            
+            visitadata.guardarVisita(visita);
+            
+           
      } catch (ClassNotFoundException ex) {
                     Logger.getLogger(ClinicaVeterinaria.class.getName()).log(Level.SEVERE, null, ex);
                
