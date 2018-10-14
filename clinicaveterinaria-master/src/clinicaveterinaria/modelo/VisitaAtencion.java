@@ -46,6 +46,12 @@ public class VisitaAtencion {
         this.fechaVisita = fechaVisita;
         this.peso = peso;        
     }
+
+    VisitaAtencion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
     
     
 

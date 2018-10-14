@@ -135,7 +135,7 @@ public MascotaData (Conexion conexion) {
     
         try {
             
-            String sql = "UPDATE alumno SET nombre = ?, fecNac = ? , activo =? WHERE id = ?;";
+            String sql = "UPDATE cliente SET nombre = ?, fechaNacimiento = ? , activo =? WHERE id = ?;";
 
             try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                statement.setString(1, mascota.getEspecie());
@@ -191,7 +191,7 @@ public MascotaData (Conexion conexion) {
             
     
         } catch (SQLException ex) {
-            System.out.println("Error al insertar un mascota: " + ex.getMessage());
+            System.out.println("Error al insertar una mascota: " + ex.getMessage());
         }
         
         return mascota;

@@ -77,7 +77,7 @@ public class ClinicaVeterinaria {
             ttdata.actualizarTratamiento(trata);
             ttdata.obtenerTratamiento();
             VisitaAtencionData visitadata = new VisitaAtencionData(conexion);
-            VisitaAtencion visita = new VisitaAtencion(2, 3, "garrapatas", LocalDate.of(2003, 5, 15), 7.5);
+            VisitaAtencion visita = new VisitaAtencion(3, 3, "garrapatas", LocalDate.of(2003, 5, 15), 7.5);
             
             visitadata.guardarVisita(visita);
          */
