@@ -40,9 +40,9 @@ public class VisitaAtencionData {
             statement.setDouble(5, visitaAtencion.getPeso());
             statement.executeUpdate();
             
-            ResultSet rs = statement.executeQuery();
+            ResultSet rs = statement.getGeneratedKeys();
             if (rs.next()){
-                visitaAtencion.setIdvisitaatencion(rs.getInt(1));
+                visitaAtencion.setIdvisitaatencion(1);
             } else {
                 System.out.println("No se pudo obtener el id luego de insertar la visita");
             }
