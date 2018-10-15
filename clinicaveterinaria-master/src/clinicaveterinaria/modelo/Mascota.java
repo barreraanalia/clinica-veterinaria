@@ -34,7 +34,7 @@ public class Mascota {
     }
 
     Mascota() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
  
 
