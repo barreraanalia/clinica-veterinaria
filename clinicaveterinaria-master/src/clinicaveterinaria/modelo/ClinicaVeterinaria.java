@@ -5,9 +5,12 @@
  */
 package clinicaveterinaria.modelo;
 
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 /**
  *
  * @author erecem
@@ -26,7 +29,7 @@ public class ClinicaVeterinaria {
                 
                 try {
                     conexion = new Conexion("jdbc:mysql://localhost/clinica_veterinaria","root","");
-                
+              /*  
                 
                // Cliente clientes = new Cliente("moreno christian","3584284451","mitre 1224","aishi gimenez",35475534);
                Cliente cliente3 = new Cliente("giuliano escudero","34827482","san martin","timote escudero",472367819);
@@ -61,7 +64,7 @@ public class ClinicaVeterinaria {
             //     System.out.println("Nombre: " + cliente.getNombreApellido() );
             //  });
             
-            */
+            
             
             TratamientoData ttdata = new TratamientoData(conexion);
             Tratamiento trata = new Tratamiento(0001, "corte de pelo", "el perro tenia muchas pulgas", 150.75, true,2);
@@ -77,7 +80,30 @@ public class ClinicaVeterinaria {
             VisitaAtencion visita = new VisitaAtencion(2, 3, "garrapatas", LocalDate.of(2003, 5, 15), 7.5);
             
             visitadata.guardarVisita(visita);
-            
+         */
+                 List<Cliente> listaPrueba= new ArrayList<>();
+            List<Cliente> resultado= new ArrayList<>();
+        
+                
+      listaPrueba = clientedata.obtenerCliente();
+        
+        for(Cliente cliente :listaPrueba){
+            if(cliente.getNombreApellido().equals("alguien")){
+            resultado.add(cliente);
+                    }
+        }
+     Mascota mascotaprueba = new Mascota ();              
+    mascotaprueba.setAlias("pikachu");
+    mascotaprueba.setCodigo(002);
+    mascotaprueba.setColorPelo("rubio");
+    mascotaprueba.setEspecie("pokemon");
+    mascotaprueba.setRaza("electrico");
+    mascotaprueba.setSexo("macho");
+    mascotaprueba.setCliente(resultado.get(0));
+    mascotaprueba.setFeNac(LocalDate.of(2005, 3, 16));
+
+       MascotaData mascotadat = new MascotaData(conexion);
+       mascotadat.guardarMascota(mascotaprueba);
            
      } catch (ClassNotFoundException ex) {
                     Logger.getLogger(ClinicaVeterinaria.class.getName()).log(Level.SEVERE, null, ex);
