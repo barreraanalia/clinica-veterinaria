@@ -90,8 +90,10 @@ public class FormularioCliente extends javax.swing.JFrame {
 
         id.setText("ID");
 
+        jframenombreapellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jframenombreapellido.setText("NOMBRE Y APELLIDO");
 
+        jdni.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jdni.setText("DOCUMENTO");
 
         direccion.setText("DIRECCION");
@@ -231,7 +233,7 @@ public class FormularioCliente extends javax.swing.JFrame {
                             .addComponent(jdni)
                             .addComponent(jtextdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jbuscar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(direccion)
                             .addComponent(jTextdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
