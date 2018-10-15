@@ -83,7 +83,7 @@ public class ClinicaVeterinaria {
          */
                  List<Cliente> listaPrueba= new ArrayList<>();
             List<Cliente> resultado= new ArrayList<>();
-        
+          ClienteData clientedata = new ClienteData(conexion);  
                 
       listaPrueba = clientedata.obtenerCliente();
         
