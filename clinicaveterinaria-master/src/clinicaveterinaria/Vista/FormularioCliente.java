@@ -88,6 +88,7 @@ public class FormularioCliente extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, Short.MAX_VALUE))
         );
 
+        id.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         id.setText("ID");
 
         jframenombreapellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -96,10 +97,13 @@ public class FormularioCliente extends javax.swing.JFrame {
         jdni.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jdni.setText("DOCUMENTO");
 
+        direccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         direccion.setText("DIRECCION");
 
+        personaAlter.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         personaAlter.setText("PERSONA ALTERNATIVA");
 
+        telefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         telefono.setText("TELEFONO");
 
         jguardar.setText("GUARDAR");
