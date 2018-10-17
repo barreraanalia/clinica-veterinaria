@@ -264,6 +264,9 @@ public class FormularioCliente extends javax.swing.JFrame {
 
     private void jbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuscarActionPerformed
         // TODO add your handling code here:
+
+               
+                
     }//GEN-LAST:event_jbuscarActionPerformed
 
     private void jtextdniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextdniActionPerformed
