@@ -461,6 +461,7 @@ public class FormularioMascota extends javax.swing.JFrame {
 
              Mascota mascota=new Mascota(especie,raza,colorPelo,alias,pesoPromedio,fechaNacimiento,codigo,cliente);
              mascotaData.actualizarMascota(mascota);
+         }
         
     }//GEN-LAST:event_jbactualizarActionPerformed
 
@@ -492,17 +493,18 @@ public class FormularioMascota extends javax.swing.JFrame {
     private void jbbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbbuscarActionPerformed
         // TODO add your handling code here:
         int id=Integer.parseInt(jtId.getText());
-        Mascota mascota=MascotaData.buscarMascota(id);
+        
+        Mascota mascota=new MascotaData(conexion).buscarMascota(id);
         if(mascota!=null){
                 jtId.setText(mascota.getId()+"");
                 jtespecie.setText(mascota.getEspecie());
                 jtraza.setText(mascota.getRaza());
                 jtcolorpelo.setText(mascota.getColorPelo());
                 jtalias.setText(mascota.getAlias());
-                jtpesopromedio.setText(mascota.getPesoPromedio());
+                jtpesopromedio.setText(mascota.getPesoPromedio()+"");
                 jfechanacimiento.setText(mascota.getFechaNacimiento().toString());
-                jtcodigo.setText(mascota.getCodigo());
-                jtcliente.setText(mascota.getCliente());
+                jtcodigo.setText(mascota.getCodigo()+"");
+                jtcliente.setText(mascota.getCliente()+"");
                 
                 
                 
