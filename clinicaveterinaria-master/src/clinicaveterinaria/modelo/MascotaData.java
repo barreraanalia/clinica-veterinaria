@@ -49,8 +49,9 @@ public MascotaData (Conexion conexion) {
                 statement.setString(4, mascota.getSexo());
                 statement.setString(5, mascota.getAlias());
                 statement.setDate(6, Date.valueOf(mascota.getFechaNacimiento()));
-                statement.setInt(7, mascota.getCodigo());
-                statement.setInt(8,mascota.getCliente().getId() );
+                statement.setDouble(7, mascota.getPesoPromedio());
+                statement.setInt(8, mascota.getCodigo());
+                statement.setInt(9,mascota.getCliente().getId() );
             } catch (SQLException ex) {
                 Logger.getLogger(MascotaData.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -96,6 +97,7 @@ public MascotaData (Conexion conexion) {
                     mascota.setSexo(resultSet.getString("sexo"));
                     mascota.setAlias(resultSet.getString("Alias"));
                     mascota.setFeNac(resultSet.getDate("fechaNacimiento").toLocalDate());
+                    mascota.setPesoPromedio(resultSet.getDouble("pesoPromedio"));
                     mascota.setCodigo(resultSet.getInt("codigo"));
                     mascota.setId(resultSet.getInt("cliente"));
                    
@@ -144,8 +146,9 @@ public MascotaData (Conexion conexion) {
                statement.setString(4, mascota.getSexo());
                statement.setString(5, mascota.getAlias());
                statement.setDate(6, Date.valueOf(mascota.getFechaNacimiento()));
-               statement.setInt(7, mascota.getCodigo());
-               statement.setInt(8,mascota.getCliente().getId() );
+               statement.setDouble(7, mascota.getPesoPromedio());
+               statement.setInt(8, mascota.getCodigo());
+               statement.setInt(9,mascota.getCliente().getId() );
                statement.executeUpdate();
                
   
@@ -177,6 +180,7 @@ public MascotaData (Conexion conexion) {
                 mascota.setSexo(resultSet.getString("sexo"));
                 mascota.setAlias(resultSet.getString("alias"));
                 mascota.setFeNac(resultSet.getDate("fechaNacimiento").toLocalDate());
+                mascota.setPesoPromedio(resultSet.getDouble("pesoPromedio"));
                 mascota.setCodigo(resultSet.getInt("codigo"));
                 mascota.setId(resultSet.getInt("cliente"));
                 

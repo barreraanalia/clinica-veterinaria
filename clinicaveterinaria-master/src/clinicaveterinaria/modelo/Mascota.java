@@ -36,6 +36,14 @@ public class Mascota {
     Mascota() {
         
     }
+
+    public Mascota(String especie, String raza, String colorPelo, String alias, Double pesoPromedio, LocalDate fechaNacimiento, int codigo, int cliente) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Mascota(String especie, String raza, String colorPelo, String alias, String pesoPromedio, LocalDate fechaNacimiento, String codigo, String cliente) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
  
 
     public String getEspecie() {
