@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 /**
  *
  * @author erecem
@@ -92,18 +91,18 @@ public class ClinicaVeterinaria {
             resultado.add(cliente);
                     }
         }
-     Mascota mascotaprueba = new Mascota ();              
-    mascotaprueba.setAlias("pikachu");
-    mascotaprueba.setCodigo(002);
-    mascotaprueba.setColorPelo("rubio");
+     Mascota mascotaprueba = new Mascota (); 
     mascotaprueba.setEspecie("pokemon");
     mascotaprueba.setRaza("electrico");
+    mascotaprueba.setColorPelo("rubio");
     mascotaprueba.setSexo("macho");
+    mascotaprueba.setAlias("pikachu");
+    mascotaprueba.setCodigo(002);
     mascotaprueba.setCliente(resultado.get(0));
     mascotaprueba.setFeNac(LocalDate.of(2005, 3, 16));
 
-       MascotaData mascotadat = new MascotaData(conexion);
-       mascotadat.guardarMascota(mascotaprueba);
+       MascotaData mascotadata = new MascotaData(conexion);
+       mascotadata.guardarMascota(mascotaprueba);
            
      } catch (ClassNotFoundException ex) {
                     Logger.getLogger(ClinicaVeterinaria.class.getName()).log(Level.SEVERE, null, ex);

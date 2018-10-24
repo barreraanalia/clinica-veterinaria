@@ -15,11 +15,14 @@ import java.time.LocalDate;
  * @author erecem
  */
 public class Mascota {
-    private String especie,raza,colorPelo,sexo,alias;
+    private String especie;
+    private String raza;
+    private String colorPelo;
+    private String sexo;
+    private String alias;
     private LocalDate fechaNacimiento;
-    private double pesoPromedio;
     private int codigo;
-    private Cliente cliente;
+    private Cliente idcliente;
     private int idmascota;
 
     public Mascota(String especie, String raza, String colorPelo, String sexo, String alias, LocalDate feNac, int codigo, Cliente cliente) {
@@ -30,7 +33,7 @@ public class Mascota {
         this.alias = alias;
         this.fechaNacimiento = feNac;
         this.codigo = codigo;
-        this.cliente = cliente;
+        this.idcliente = idcliente;
     }
 
     Mascota() {
@@ -42,6 +45,10 @@ public class Mascota {
     }
 
     public Mascota(String especie, String raza, String colorPelo, String alias, String pesoPromedio, LocalDate fechaNacimiento, String codigo, String cliente) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Mascota(String especie, String raza, String colorPelo, String alias, LocalDate fechaNacimiento, String codigo, String cliente) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
  
@@ -98,14 +105,7 @@ public class Mascota {
 
    
 
-    public double getPesoPromedio() {
-        return pesoPromedio;
-    }
-
-    public void setPesoPromedio(double pesoPromedio) {
-        this.pesoPromedio = pesoPromedio;
-    }
-
+   
     public int getCodigo() {
         return codigo;
     }
@@ -127,12 +127,12 @@ public void promedioPeso(double peso){
     
 }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Cliente getIdCliente() {
+        return idcliente;
     }
 
     public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+        this.idcliente = cliente;
     }
 
     public int getIdmascota() {
@@ -143,5 +143,5 @@ public void promedioPeso(double peso){
         this.idmascota = idmascota;
     }
 
-
+    
 }
