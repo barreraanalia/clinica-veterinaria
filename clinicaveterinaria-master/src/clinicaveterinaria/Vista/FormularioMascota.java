@@ -377,7 +377,7 @@ public class FormularioMascota extends javax.swing.JFrame {
         String colorPelo=jtcolorPelo.getText();
         String sexo=jtsexo.getText();
         String alias=jtalias.getText();
-        
+        double pesoPromedio=Double.parseDouble(jtpesopromedio.getText());
         LocalDate fechaNacimiento = LocalDate.parse(jfechaNacimiento.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         String codigo=jtcodigo.getText();
         String cliente=jtidcliente.getText();
@@ -399,6 +399,7 @@ public class FormularioMascota extends javax.swing.JFrame {
             String colorPelo=jtcolorPelo.getText();
             String sexo=jtsexo.getText();
             String alias=jtalias.getText();
+            double pesoPromedio=Double.parseDouble(jtpesopromedio.getText());
             LocalDate fechaNacimiento = LocalDate.parse(jfechaNacimiento.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             String codigo=jtcodigo.getText();
             String cliente=jtidcliente.getText();
@@ -416,6 +417,7 @@ public class FormularioMascota extends javax.swing.JFrame {
     jtalias.setText("");
      jtcolorPelo.setText("");
     jtsexo.setText("");
+    jtpesopromedio.setText("");
     jfechaNacimiento.setText("");
     jtcodigo.setText("");
     jtidcliente.setText("");
@@ -443,6 +445,7 @@ public class FormularioMascota extends javax.swing.JFrame {
                 jtcolorPelo.setText(mascota.getColorPelo());
                 jtsexo.setText(mascota.getSexo());
                 jtalias.setText(mascota.getAlias());
+                jtpesopromedio.setText(mascota.getPesoPromedio()+"");
                 jfechaNacimiento.setText(mascota.getFechaNacimiento().toString());
                 jtcodigo.setText(mascota.getCodigo()+"");
                 jtidcliente.setText(mascota.getIdCliente()+"");
