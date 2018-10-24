@@ -35,7 +35,7 @@ public MascotaData (Conexion conexion) {
     
   public void  guardarMascota(Mascota mascota){
         try {
-            String sql = "INSERT INTO mascota (especie,raza,colorPelo,sexo,alias,fechaNacimiento,codigo,idcliente) VALUES (?,?,?,?,?,?,?,?,?);";
+            String sql = "INSERT INTO mascota (especie,raza,colorPelo,sexo,alias,fechaNacimiento,codigo,idcliente) VALUES (?,?,?,?,?,?,?,?);";
             
             
             PreparedStatement statement = null;
@@ -135,7 +135,7 @@ public MascotaData (Conexion conexion) {
     
         try {
             
-            String sql = "UPDATE cliente SET nombre = ?, fechaNacimiento = ? , especie =? WHERE id = ?;";
+            String sql = "UPDATE mascota SET especie = ? ,raza = ? , colorPelo = ?,colorPelo = ?, sexo = ?, alias = ?   fechaNacimiento = ? , codigo =?, idcliente =? ;";
 
             try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                statement.setString(1, mascota.getEspecie());
