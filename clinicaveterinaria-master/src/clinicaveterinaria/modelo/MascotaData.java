@@ -35,7 +35,7 @@ public MascotaData (Conexion conexion) {
     
   public void  guardarMascota(Mascota mascota){
         try {
-            String sql = "INSERT INTO mascota (especie,raza,colorPelo,sexo,alias,fechaNacimiento,codigo,idcliente) VALUES (?,?,?,?,?,?,?,?);";
+            String sql = "INSERT INTO mascota (especie,raza,colorPelo,sexo,alias,pesoPromedio,fechaNacimiento,codigo,idcliente) VALUES (?,?,?,?,?,?,?,?,?);";
             
             
             PreparedStatement statement = null;
@@ -48,9 +48,10 @@ public MascotaData (Conexion conexion) {
                 statement.setString(3, mascota.getColorPelo());
                 statement.setString(4, mascota.getSexo());
                 statement.setString(5, mascota.getAlias());
-                statement.setDate(6, Date.valueOf(mascota.getFechaNacimiento()));
-                statement.setInt(7, mascota.getCodigo());
-                statement.setInt(8,mascota.getIdCliente().getId() );
+                statement.setDouble(6, mascota.getPesoPromedio());
+                statement.setDate(7, Date.valueOf(mascota.getFechaNacimiento()));
+                statement.setInt(8, mascota.getCodigo());
+                statement.setInt(9,mascota.getIdCliente().getId() );
             } catch (SQLException ex) {
                 Logger.getLogger(MascotaData.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -83,7 +84,7 @@ public MascotaData (Conexion conexion) {
 
         try {
             String sql;
-            sql = "SELECT * FROM cliente;";
+            sql = "SELECT * FROM mascota;";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 ResultSet resultSet = statement.executeQuery();
                 Mascota mascota;
@@ -95,6 +96,7 @@ public MascotaData (Conexion conexion) {
                     mascota.setColorPelo(resultSet.getString("colorPelo"));
                     mascota.setSexo(resultSet.getString("sexo"));
                     mascota.setAlias(resultSet.getString("Alias"));
+                    mascota.setPesoPromedio(resultSet.getDouble("pesoPromedio"));
                     mascota.setFeNac(resultSet.getDate("fechaNacimiento").toLocalDate());
                     mascota.setCodigo(resultSet.getInt("codigo"));
                     mascota.setId(resultSet.getInt("idcliente"));
@@ -135,7 +137,7 @@ public MascotaData (Conexion conexion) {
     
         try {
             
-            String sql = "UPDATE mascota SET especie = ? ,raza = ? , colorPelo = ?,colorPelo = ?, sexo = ?, alias = ?   fechaNacimiento = ? , codigo =?, idcliente =? ;";
+            String sql = "UPDATE mascota SET especie = ? ,raza = ? , colorPelo = ?,colorPelo = ?, sexo = ?, alias = ? ,pesoPromedio= ?,  fechaNacimiento = ? , codigo =?, idcliente =? ;";
 
             try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                statement.setString(1, mascota.getEspecie());
@@ -143,9 +145,10 @@ public MascotaData (Conexion conexion) {
                statement.setString(3, mascota.getColorPelo());
                statement.setString(4, mascota.getSexo());
                statement.setString(5, mascota.getAlias());
-               statement.setDate(6, Date.valueOf(mascota.getFechaNacimiento()));
-               statement.setInt(7, mascota.getCodigo());
-               statement.setInt(8,mascota.getIdCliente().getId() );
+               statement.setDouble(6,mascota.getPesoPromedio());
+               statement.setDate(7, Date.valueOf(mascota.getFechaNacimiento()));
+               statement.setInt(8, mascota.getCodigo());
+               statement.setInt(9,mascota.getIdCliente().getId() );
                statement.executeUpdate();
                
   
@@ -176,6 +179,7 @@ public MascotaData (Conexion conexion) {
                 mascota.setColorPelo(resultSet.getString("colorPelo"));
                 mascota.setSexo(resultSet.getString("sexo"));
                 mascota.setAlias(resultSet.getString("alias"));
+                mascota.setPesoPromedio(resultSet.getDouble("pesoPromedio"));
                 mascota.setFeNac(resultSet.getDate("fechaNacimiento").toLocalDate());
                 mascota.setCodigo(resultSet.getInt("codigo"));
                 mascota.setId(resultSet.getInt("idcliente"));
