@@ -41,7 +41,7 @@ private Connection conecction= null;
     try {
         PreparedStatement statement = conecction.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         statement.setString(1,cliente.getNombreApellido());
-        statement.setString(2,cliente.getDireccion());
+        statement.setString(2,cliente.getTelefono());
         statement.setString(3,cliente.getDireccion());
         statement.setString(4,cliente.getPersonAlternativa());
         statement.setLong(5,cliente.getDocumento());
@@ -98,8 +98,10 @@ public List<Cliente> obtenerCliente(){
                 cliente = new Cliente();
                 cliente.setId(resultSet.getInt("idcliente")); 
                 cliente.setNombreApellido(resultSet.getString("nombrecompleto"));
-                cliente.setDireccion("direccion");
-                
+                cliente.setDireccion(resultSet.getString("direccion"));
+                cliente.setDocumento(resultSet.getInt("documento"));
+                cliente.setPersonAlternativa(resultSet.getString("personalternativa"));
+                cliente.setTelefono(resultSet.getString("telefono"));
      
         
 
@@ -116,10 +118,10 @@ public List<Cliente> obtenerCliente(){
 
 public void actualizarCliente(Cliente cliente){
     try {
-        String sql = "UPDATE FROM cliente SET nombrecompleto= ?,telefono= ?,direccion= ?,personalternativa= ?,documento= ? WHERE idcliente=?";
+        String sql = "UPDATE  cliente SET nombrecompleto= ?,telefono= ?,direccion= ?,personalternativa= ?,documento= ? WHERE idcliente=?";
         PreparedStatement statement = conecction.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         statement.setString(1,cliente.getNombreApellido());
-        statement.setString(2,cliente.getDireccion());
+        statement.setString(2,cliente.getTelefono());
         statement.setString(3,cliente.getDireccion());
         statement.setString(4,cliente.getPersonAlternativa());
         statement.setLong(5,cliente.getDocumento());
@@ -135,7 +137,7 @@ public void actualizarCliente(Cliente cliente){
         
         String sql = "SELECT * FROM cliente WHERE idcliente=?;";
         PreparedStatement statement = conecction.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-        statement.setInt(1, id);
+        statement.setInt(1,id);
         
  
         ResultSet resultSet=statement.executeQuery();
