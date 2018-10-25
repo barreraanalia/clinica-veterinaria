@@ -26,7 +26,7 @@ private Conexion conexion;
     public FormularioCliente() {
         initComponents();
     try {
-        conexion = new Conexion("jdbc:mysql://localhost/clinica_veterinaria", "root", "");
+        conexion = new Conexion("jdbc:mysql://localhost/clinicaveterinaria", "root", "");
     } catch (ClassNotFoundException ex) {
         Logger.getLogger(FormularioCliente.class.getName()).log(Level.SEVERE, null, ex);
     }
