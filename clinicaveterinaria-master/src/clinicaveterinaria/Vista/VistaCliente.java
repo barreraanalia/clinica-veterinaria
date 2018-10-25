@@ -31,7 +31,7 @@ private ArrayList<Cliente> listaCliente;
     public VistaCliente() {
         try {
             initComponents();
-            Conexion conexion = new Conexion("jdbc:mysql://localhost/clinicaveterinaria", "root", "");
+            Conexion conexion = new Conexion("jdbc:mysql://localhost/clinica_veterinaria", "root", "");
             modelo=new DefaultTableModel();
             
             ClienteData clienteData = new ClienteData(conexion);
