@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  *
- * @author Usuario
+ * @author Carlos
  */
 public class VisitaAtencionData {
     private Connection connection = null;
@@ -61,7 +61,7 @@ public class VisitaAtencionData {
 
         try {
             String sql;
-            sql = "SELECT * FROM cliente;";
+            sql = "SELECT * FROM visitaatencion;";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 ResultSet resultSet = statement.executeQuery();
                 VisitaAtencion visitaatencion;
@@ -89,7 +89,7 @@ public class VisitaAtencionData {
      public void borrarVistitaAtencion(int id){
     try {
             
-            String sql = "DELETE FROM visitaAtencion WHERE id =?;";
+            String sql = "DELETE FROM visitaAtencion WHERE idvisitaatencion =?;";
 
         try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             statement.setInt(1, id);
@@ -99,7 +99,7 @@ public class VisitaAtencionData {
         }
     
         } catch (SQLException ex) {
-            System.out.println("Error al insertar una visitaAtencion: " + ex.getMessage());
+            System.out.println("Error al eliminar una visitaAtencion: " + ex.getMessage());
         }
         
     
@@ -109,7 +109,7 @@ public class VisitaAtencionData {
     
         try {
             
-            String sql = "UPDATE cliente SET nombre = ?, fechaVisita = ? , activo =? WHERE id = ?;";
+            String sql = "UPDATE visitaatencion SET idmascota = ?, idtratamiento = ? , detalles =? fechavisita=?, peso=? WHERE idvisitaatencion = ?;";
 
             try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                
@@ -133,9 +133,9 @@ public class VisitaAtencionData {
     
      public VisitaAtencion buscarVisitaAtencion(int id){
     VisitaAtencion visitaatencion=null;
-    try {
+    try {            
             
-            String sql = "SELECT * FROM mascota WHERE id =?;";
+            String sql = "SELECT * FROM visitaAtencion WHERE idvisitaatencion =?;";
 
         try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             statement.setInt(1, id);
@@ -144,17 +144,20 @@ public class VisitaAtencionData {
             ResultSet resultSet=statement.executeQuery();
             while(resultSet.next()){
                     visitaatencion= new VisitaAtencion();
+                    visitaatencion.setIdvisitaatencion(resultSet.getInt("idvisitaatencion"));
                     visitaatencion.setIdmascota(resultSet.getInt("idMascota"));
                     visitaatencion.setIdtratamiento(resultSet.getInt("idTratamiento"));
-                    visitaatencion.setDetalles(resultSet.getString("detalles"));
+                    visitaatencion.setDetalles(resultSet.getString("detallles"));
                     visitaatencion.setFechaVisita(resultSet.getDate("fechaVisita").toLocalDate());
                     visitaatencion.setPeso(resultSet.getDouble("peso"));
+                                                            
                     
             }
+            statement.close();
         }
         
         } catch (SQLException ex) {
-            System.out.println("Error al insertar una visitaAtencion: " + ex.getMessage());
+            System.out.println("No se encontro la visita de Atencion: " + ex.getMessage());
         }
         
         return visitaatencion;

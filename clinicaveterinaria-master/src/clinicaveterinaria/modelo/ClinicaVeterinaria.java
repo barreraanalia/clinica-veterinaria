@@ -80,29 +80,29 @@ public class ClinicaVeterinaria {
             
             visitadata.guardarVisita(visita);
          */
-                 List<Cliente> listaPrueba= new ArrayList<>();
-            List<Cliente> resultado= new ArrayList<>();
-          ClienteData clientedata = new ClienteData(conexion);  
+                // List<Cliente> listaPrueba= new ArrayList<>();
+            //List<Cliente> resultado= new ArrayList<>();
+          //ClienteData clientedata = new ClienteData(conexion);  
                 
-      listaPrueba = clientedata.obtenerCliente();
+      //listaPrueba = clientedata.obtenerCliente();
         
-        for(Cliente cliente :listaPrueba){
-            if(cliente.getNombreApellido().equals("alguien")){
-            resultado.add(cliente);
-                    }
-        }
-     Mascota mascotaprueba = new Mascota (); 
-    mascotaprueba.setEspecie("pokemon");
-    mascotaprueba.setRaza("electrico");
-    mascotaprueba.setColorPelo("rubio");
-    mascotaprueba.setSexo("macho");
-    mascotaprueba.setAlias("pikachu");
-    mascotaprueba.setCodigo(002);
+        //for(Cliente cliente :listaPrueba){
+            //if(cliente.getNombreApellido().equals("alguien")){
+            //resultado.add(cliente);
+                   // }
+        //}
+     //Mascota mascotaprueba = new Mascota (); 
+    //mascotaprueba.setEspecie("pokemon");
+    //mascotaprueba.setRaza("electrico");
+    //mascotaprueba.setColorPelo("rubio");
+    //mascotaprueba.setSexo("macho");
+    //mascotaprueba.setAlias("pikachu");
+    //mascotaprueba.setCodigo(002);
     //mascotaprueba.setCliente(resultado.get(0));
-    mascotaprueba.setFeNac(LocalDate.of(2005, 3, 16));
+    //mascotaprueba.setFeNac(LocalDate.of(2005, 3, 16));
 
-       MascotaData mascotadata = new MascotaData(conexion);
-       mascotadata.guardarMascota(mascotaprueba);
+       //MascotaData mascotadata = new MascotaData(conexion);
+      // mascotadata.guardarMascota(mascotaprueba);
            
      } catch (ClassNotFoundException ex) {
                     Logger.getLogger(ClinicaVeterinaria.class.getName()).log(Level.SEVERE, null, ex);

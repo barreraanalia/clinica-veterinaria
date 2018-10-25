@@ -77,7 +77,6 @@ public MascotaData (Conexion conexion) {
         }
         
         
-        
  }
   public List<Mascota> obtenerMascota(){
         List<Mascota> mascotas = new ArrayList<>();
@@ -201,11 +200,5 @@ public MascotaData (Conexion conexion) {
         
         return mascota;
     }
+
 }
-
-     
- 
-         
-  
-
-
