@@ -90,12 +90,13 @@ public List<Cliente> obtenerCliente(){
             
 
         try {
-            String sql = "SELECT * FROM Cliente;";
+               String sql = "SELECT * FROM Cliente;";
             PreparedStatement statement = conecction.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
             Cliente cliente;
             while(resultSet.next()){
-               cliente.setId(resultSet.getInt("idcliente")); 
+                cliente = new Cliente();
+                cliente.setId(resultSet.getInt("idcliente")); 
                 cliente.setNombreApellido(resultSet.getString("nombrecompleto"));
                 cliente.setDireccion(resultSet.getString("direccion"));
                 cliente.setDocumento(resultSet.getInt("documento"));
@@ -104,7 +105,7 @@ public List<Cliente> obtenerCliente(){
                 
      
         
-
+ statement.executeUpdate();
                 clientes.add(cliente);
             }      
             statement.close();
