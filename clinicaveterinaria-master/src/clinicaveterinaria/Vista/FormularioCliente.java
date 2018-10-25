@@ -25,6 +25,7 @@ private Conexion conexion;
      */
     public FormularioCliente() {
         initComponents();
+        
     try {
         conexion = new Conexion("jdbc:mysql://localhost/clinica_veterinaria", "root", "");
     } catch (ClassNotFoundException ex) {
@@ -370,11 +371,12 @@ System.exit(WIDTH);        // TODO add your handling code here:
     }//GEN-LAST:event_jguardarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- FormularioCliente formulariocliente = new FormularioCliente ();
+    
+   
         VistaCliente listacliente = new VistaCliente();
-  formulariocliente.setVisible(false);
+    
         listacliente.setVisible(true);
- 
+     FormularioCliente.this.dispose();
  
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -25,7 +25,8 @@ import javax.swing.table.DefaultTableModel;
 public class VistaCliente extends javax.swing.JFrame {
 private DefaultTableModel modelo;
 private ArrayList<Cliente> listaCliente;
-    /**
+VistaCliente listacliente;    
+/**
      * Creates new form VistaCliente
      */
     public VistaCliente() {
@@ -237,9 +238,11 @@ String campo = txtCampo.getText();
     }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 FormularioCliente formulariocliente = new FormularioCliente ();
-        VistaCliente listacliente = new VistaCliente();
+      
   formulariocliente.setVisible(true);
-        listacliente.setVisible(false);        // TODO add your handling code here:
+        VistaCliente.this.dispose();
+  
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
     
     
