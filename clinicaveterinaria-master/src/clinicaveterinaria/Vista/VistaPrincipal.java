@@ -18,7 +18,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
      */
     public VistaPrincipal() {
         initComponents();
-        this.setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**

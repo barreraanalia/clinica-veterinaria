@@ -98,7 +98,7 @@ public class ClinicaVeterinaria {
     mascotaprueba.setSexo("macho");
     mascotaprueba.setAlias("pikachu");
     mascotaprueba.setCodigo(002);
-    mascotaprueba.setCliente(resultado.get(0));
+    //mascotaprueba.setCliente(resultado.get(0));
     mascotaprueba.setFeNac(LocalDate.of(2005, 3, 16));
 
        MascotaData mascotadata = new MascotaData(conexion);
