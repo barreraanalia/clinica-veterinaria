@@ -127,6 +127,7 @@ public void actualizarCliente(Cliente cliente){
         statement.setLong(5,cliente.getDocumento());
         statement.setInt(6, cliente.getId());
         statement.executeUpdate();
+          statement.close();
     } catch (SQLException ex) {
         Logger.getLogger(ClienteData.class.getName()).log(Level.SEVERE, null, ex);
     }
