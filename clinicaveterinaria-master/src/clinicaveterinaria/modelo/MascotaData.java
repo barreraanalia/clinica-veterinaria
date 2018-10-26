@@ -99,7 +99,7 @@ public MascotaData (Conexion conexion) {
                     mascota.setPesoPromedio(resultSet.getDouble("pesoPromedio"));
                     mascota.setFechaNacimiento(resultSet.getDate("fechaNacimiento").toLocalDate());
                     mascota.setCodigo(resultSet.getInt("codigo"));
-                    
+                    mascota.setId(resultSet.getInt("idcliente"));
                 
                    
                     mascotas.add(mascota);
@@ -183,8 +183,8 @@ public MascotaData (Conexion conexion) {
                 mascota.setPesoPromedio(resultSet.getDouble("pesoPromedio"));
                 mascota.setFechaNacimiento(resultSet.getDate("fechaNacimiento").toLocalDate());
                 mascota.setCodigo(resultSet.getInt("codigo"));
-                
-                mascota.setIdcliente(resultSet.getCliente("Idcliente").getId());
+                mascota.setId(resultSet.getInt("idcliente"));
+               
                 
                 
                 
