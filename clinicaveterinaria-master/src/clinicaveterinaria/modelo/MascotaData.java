@@ -51,7 +51,7 @@ public MascotaData (Conexion conexion) {
                 statement.setDouble(6, mascota.getPesoPromedio());
                 statement.setDate(7, Date.valueOf(mascota.getFechaNacimiento()));
                 statement.setInt(8, mascota.getCodigo());
-                statement.setInt(9,mascota.getIdcliente());
+                statement.setInt(9,mascota.getIdcliente().getId());
             } catch (SQLException ex) {
                 Logger.getLogger(MascotaData.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -99,7 +99,8 @@ public MascotaData (Conexion conexion) {
                     mascota.setPesoPromedio(resultSet.getDouble("pesoPromedio"));
                     mascota.setFechaNacimiento(resultSet.getDate("fechaNacimiento").toLocalDate());
                     mascota.setCodigo(resultSet.getInt("codigo"));
-                    mascota.setIdcliente(resultSet.getInt("Idcliente"));
+                    
+                
                    
                     mascotas.add(mascota);
                 }
@@ -148,7 +149,7 @@ public MascotaData (Conexion conexion) {
                statement.setDouble(6,mascota.getPesoPromedio());
                statement.setDate(7, Date.valueOf(mascota.getFechaNacimiento()));
                statement.setInt(8, mascota.getCodigo());
-               statement.setInt(9,mascota.getIdcliente());
+               statement.setInt(9,mascota.getIdcliente().getId());
                statement.executeUpdate();
                
   
@@ -182,7 +183,8 @@ public MascotaData (Conexion conexion) {
                 mascota.setPesoPromedio(resultSet.getDouble("pesoPromedio"));
                 mascota.setFechaNacimiento(resultSet.getDate("fechaNacimiento").toLocalDate());
                 mascota.setCodigo(resultSet.getInt("codigo"));
-                mascota.setIdcliente(resultSet.getInt("Idcliente"));
+                
+                mascota.setIdcliente(resultSet.getCliente("Idcliente").getId());
                 
                 
                 

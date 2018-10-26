@@ -76,11 +76,11 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabelIdmascota" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Component id="jTextFieldIdmascota" min="-2" pref="48" max="-2" attributes="0"/>
+                          <Component id="jtmascota" min="-2" pref="48" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabelIdtratamient" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jTextFieldIdtratamiento" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="jttratamiento" min="-2" pref="50" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -95,8 +95,8 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelIdmascota" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelIdtratamient" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldIdmascota" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldIdtratamiento" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtmascota" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jttratamiento" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelIdvisita" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextFieldIdvisita" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -136,12 +136,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelIdmascota">
           <Properties>
-            <Property name="text" type="java.lang.String" value="ID mascota"/>
+            <Property name="text" type="java.lang.String" value="mascota"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelIdtratamient">
           <Properties>
-            <Property name="text" type="java.lang.String" value="ID Tratamiento"/>
+            <Property name="text" type="java.lang.String" value="Tratamiento"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelFecha">
@@ -159,16 +159,16 @@
             <Property name="text" type="java.lang.String" value="Detalles"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldIdmascota">
+        <Component class="javax.swing.JTextField" name="jtmascota">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldIdtratamiento">
+        <Component class="javax.swing.JTextField" name="jttratamiento">
           <Properties>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Cursor de Texto"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldIdtratamientoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jttratamientoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldFecha">

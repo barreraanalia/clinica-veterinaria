@@ -36,7 +36,7 @@ public class TratamientoData {
              statement.setString(2, tratamiento.getTipo());
              statement.setString(3, tratamiento.getDescripcion());
              statement.setDouble(4, tratamiento.getImporte());
-             statement.setBoolean(5, tratamiento.isActivo());             
+             statement.setBoolean(5, tratamiento.getActivo());             
              statement.executeUpdate();
              
              ResultSet rs = statement.getGeneratedKeys();
@@ -72,7 +72,7 @@ public class TratamientoData {
                 System.out.println("tipo de tratamiento: "+ tratamiento.getTipo());
                 System.out.println("descripcion: "+tratamiento.getDescripcion());
                 System.out.println("importe: "+tratamiento.getImporte());
-                System.out.println("El tratamiento se encuentra: "+tratamiento.isActivo());
+                System.out.println("El tratamiento se encuentra: "+tratamiento.getActivo());
             }      
             statement.close();
         }
@@ -103,7 +103,7 @@ public class TratamientoData {
             statement.setString(1, tratamiento.getTipo());
             statement.setInt(2, tratamiento.getCodigoTratamiento());
             statement.setDouble(3, tratamiento.getImporte());            
-            statement.setBoolean(4, tratamiento.isActivo());
+            statement.setBoolean(4, tratamiento.getActivo());
             statement.setString(5, tratamiento.getDescripcion());
             statement.setInt(6, tratamiento.getIdtratamiento());
             statement.executeUpdate();
@@ -112,6 +112,33 @@ public class TratamientoData {
         catch (SQLException ex) {
             System.out.println("Error de actualizacion: "+ex.getMessage());
         }
+    }
+    
+    public Tratamiento buscartratamiento(int id){
+    Tratamiento tratamiento=null;
+    try {            
+            String sql = "SELECT * FROM tratamiento WHERE idtratamiento =?;";
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement.setInt(1, id);           
+            
+            ResultSet resultSet=statement.executeQuery();
+            
+            while(resultSet.next()){
+                tratamiento = new Tratamiento();
+                tratamiento.setIdtratamiento(resultSet.getInt("idtratamiento"));
+                tratamiento.setCodigoTratamiento(resultSet.getInt("codigotratamiento"));
+                tratamiento.setTipo(resultSet.getString("tipotratamiento"));
+                tratamiento.setImporte(resultSet.getDouble("importe"));
+                tratamiento.setActivo(resultSet.getBoolean("tratamientoactivo"));
+                
+            }      
+            statement.close();
+    
+        } catch (SQLException ex) {
+            System.out.println("No se encontro el tratamiento: " + ex.getMessage());
+        }
+        
+        return tratamiento;
     }
     
   }

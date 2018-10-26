@@ -19,6 +19,7 @@ public class Tratamiento {
     
     private int idtratamiento;//agregado el id tratamiento
 
+
     /*public Tratamiento(int codigoTratamiento, String tipo, String descripcion, float importe, boolean activo) {
         this.codigoTratamiento = codigoTratamiento;
         this.tipo = tipo;
@@ -26,6 +27,7 @@ public class Tratamiento {
         this.importe = importe;
         this.activo = activo;
     }*/
+    
     public Tratamiento(int codigoTratamiento, String tipo, String descripcion, double importe, boolean activo) {
         this.codigoTratamiento = codigoTratamiento;
         this.tipo = tipo;
@@ -42,7 +44,6 @@ public class Tratamiento {
         this.activo = activo;
         this.idtratamiento = idtratamiento;
     }
-    
     
     //constructor para update
     /*public Tratamiento(String tipo, int codigoTratamiento, double importe, boolean activo, String descripcion, int idtratamientoint) {
@@ -93,7 +94,7 @@ public class Tratamiento {
         this.importe = importe;
     }
 
-    public boolean isActivo() {
+    public boolean getActivo() {
         return activo;
     }
 
