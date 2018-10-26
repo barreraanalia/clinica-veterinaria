@@ -25,35 +25,19 @@ public class Mascota {
     private int codigo;
     private Cliente idcliente;
     private int idmascota;
-    
 
-    public Mascota(String especie, String raza, String colorPelo, String sexo, String alias,double pesoPromedio, LocalDate fechaNacimiento, int codigo, Cliente cliente) {
+    public Mascota(String especie, String raza, String colorPelo, String sexo, String alias, double pesoPromedio, LocalDate fechaNacimiento, int codigo, Cliente idcliente, int idmascota) {
         this.especie = especie;
         this.raza = raza;
         this.colorPelo = colorPelo;
         this.sexo = sexo;
         this.alias = alias;
+        this.pesoPromedio = pesoPromedio;
         this.fechaNacimiento = fechaNacimiento;
         this.codigo = codigo;
         this.idcliente = idcliente;
+        this.idmascota = idmascota;
     }
-
-    Mascota() {
-        
-    }
-
-    public Mascota(String especie, String raza, String colorPelo, String alias, Double pesoPromedio, LocalDate fechaNacimiento, int codigo, int cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Mascota(String especie, String raza, String colorPelo, String alias, String pesoPromedio, LocalDate fechaNacimiento, String codigo, String cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Mascota(String especie, String raza, String colorPelo, String alias, LocalDate fechaNacimiento, String codigo, String cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
- 
 
     public String getEspecie() {
         return especie;
@@ -102,22 +86,15 @@ public class Mascota {
     public void setPesoPromedio(double pesoPromedio) {
         this.pesoPromedio = pesoPromedio;
     }
-    
-    
 
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFeNac(LocalDate feNac) {
-        this.fechaNacimiento = feNac;
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
-   
-
-   
-
-   
     public int getCodigo() {
         return codigo;
     }
@@ -126,25 +103,12 @@ public class Mascota {
         this.codigo = codigo;
     }
 
-    public int getId() {
-        return idmascota;
-    }
-
-    public void setId(int idmascota) {
-        this.idmascota = idmascota;
-    }
- 
-public void promedioPeso(double peso){
-    
-    
-}
-
-    public Cliente getIdCliente() {
+    public Cliente getIdcliente() {
         return idcliente;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.idcliente = cliente;
+    public void setIdcliente(Cliente idcliente) {
+        this.idcliente = idcliente;
     }
 
     public int getIdmascota() {
@@ -154,6 +118,11 @@ public void promedioPeso(double peso){
     public void setIdmascota(int idmascota) {
         this.idmascota = idmascota;
     }
-
     
 }
+    
+
+ 
+    
+
+    

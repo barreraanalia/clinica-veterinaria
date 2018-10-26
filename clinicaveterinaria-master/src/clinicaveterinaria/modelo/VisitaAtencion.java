@@ -14,12 +14,12 @@ import java.time.LocalDate;
 public class VisitaAtencion {
     private Mascota mascota;
     private Tratamiento tratamiento;
-    private int idmascota;
+  
     private String detalles;
     private LocalDate fechaVisita;
     //private double pesoPromedio;
     private double peso;    
-    private int idtratamiento;
+    
     private int idvisitaatencion=-1;//agregado por mi
 
     /*public VisitaAtencion(Mascota mascota, LocalDate fechaVisita, double pesoPromedio, Tratamiento tramiento) {
@@ -39,9 +39,8 @@ public class VisitaAtencion {
     
     
 
-    public VisitaAtencion(int idmascota, int idtratamiento, String detalle, LocalDate fechaVisita, double peso) {
-        this.idmascota = idmascota;
-        this.idtratamiento = idtratamiento;
+    public VisitaAtencion( String detalle, LocalDate fechaVisita, double peso) {
+       
         this.detalles = detalle;
         this.fechaVisita = fechaVisita;
         this.peso = peso;        
@@ -113,22 +112,7 @@ public class VisitaAtencion {
     }
     
     
-    //metodosagregados para probar
-    public int getIdmascota() {
-        return idmascota;
-    }
-
-    public void setIdmascota(int idmascota) {
-        this.idmascota = idmascota;
-    }
-
-    public int getIdtratamiento() {
-        return idtratamiento;
-    }
-
-    public void setIdtratamiento(int idtratamiento) {
-        this.idtratamiento = idtratamiento;
-    }
+ 
 
     
     
