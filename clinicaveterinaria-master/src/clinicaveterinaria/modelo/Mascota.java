@@ -118,8 +118,13 @@ public class Mascota {
     public void setIdmascota(int idmascota) {
         this.idmascota = idmascota;
     }
+
     
-}
+    }
+
+   
+    
+
     
 
  

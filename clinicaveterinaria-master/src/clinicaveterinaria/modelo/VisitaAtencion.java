@@ -36,6 +36,8 @@ public class VisitaAtencion {
         this.fechaVisita = fechaVisita;
         this.peso = peso;
     }
+
+    
     
     
 
