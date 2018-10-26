@@ -14,47 +14,19 @@ import java.time.LocalDate;
 public class VisitaAtencion {
     private Mascota mascota;
     private Tratamiento tratamiento;
-  
     private String detalles;
     private LocalDate fechaVisita;
-    //private double pesoPromedio;
-    private double peso;    
-    
-    private int idvisitaatencion=-1;//agregado por mi
+    private double peso;   
+    private int idvisitaatencion;
 
-    /*public VisitaAtencion(Mascota mascota, LocalDate fechaVisita, double pesoPromedio, Tratamiento tramiento) {
-        this.mascota = mascota;
-        this.fechaVisita = fechaVisita;
-        this.pesoPromedio = pesoPromedio;
-        this.tratamiento = tramiento;
-    }*/
-
-    public VisitaAtencion(Mascota mascota, Tratamiento tratamiento, String detalles, LocalDate fechaVisita, double peso) {
+    public VisitaAtencion(Mascota mascota, Tratamiento tratamiento, String detalles, LocalDate fechaVisita, double peso, int idvisitaatencion) {
         this.mascota = mascota;
         this.tratamiento = tratamiento;
         this.detalles = detalles;
         this.fechaVisita = fechaVisita;
         this.peso = peso;
+        this.idvisitaatencion = idvisitaatencion;
     }
-
-    
-    
-    
-
-    public VisitaAtencion( String detalle, LocalDate fechaVisita, double peso) {
-       
-        this.detalles = detalle;
-        this.fechaVisita = fechaVisita;
-        this.peso = peso;        
-    }
-    
-    
-    VisitaAtencion() {        
-    }
-
-    
-    
-    
 
     public Mascota getMascota() {
         return mascota;
@@ -62,6 +34,22 @@ public class VisitaAtencion {
 
     public void setMascota(Mascota mascota) {
         this.mascota = mascota;
+    }
+
+    public Tratamiento getTratamiento() {
+        return tratamiento;
+    }
+
+    public void setTratamiento(Tratamiento tratamiento) {
+        this.tratamiento = tratamiento;
+    }
+
+    public String getDetalles() {
+        return detalles;
+    }
+
+    public void setDetalles(String detalles) {
+        this.detalles = detalles;
     }
 
     public LocalDate getFechaVisita() {
@@ -72,37 +60,12 @@ public class VisitaAtencion {
         this.fechaVisita = fechaVisita;
     }
 
-    /*public double getPesoPromedio() {
-        return pesoPromedio;
-    }
-
-    public void setPesoPromedio(double pesoPromedio) {
-        this.pesoPromedio = pesoPromedio;
-    }*/
-
-    public Tratamiento getTratamiento() {
-        return tratamiento;
-    }
-
-    public void setTramiento(Tratamiento tratamiento) {
-        this.tratamiento = tratamiento;
-    }
-    
-    //agregados por mi para probar la tabla
     public double getPeso() {
         return peso;
     }
 
     public void setPeso(double peso) {
         this.peso = peso;
-    }
-
-    public String getDetalles() {
-        return detalles;
-    }
-
-    public void setDetalles(String detalle) {
-        this.detalles = detalle;
     }
 
     public int getIdvisitaatencion() {
@@ -112,14 +75,11 @@ public class VisitaAtencion {
     public void setIdvisitaatencion(int idvisitaatencion) {
         this.idvisitaatencion = idvisitaatencion;
     }
-    
-    
- 
 
-    
-    
-    
-    
-    
-    
 }
+   
+    
+    
+    
+
+   
