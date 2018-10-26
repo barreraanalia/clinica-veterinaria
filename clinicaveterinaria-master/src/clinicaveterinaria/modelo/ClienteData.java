@@ -68,7 +68,7 @@ private Connection conecction= null;
 public void borrarCliente(int id){
     try {
             
-            String sql = "DELETE  cliente WHERE idcliente =?;";
+            String sql = "DELETE FROM cliente WHERE idcliente =?;";
 
             PreparedStatement statement = conecction.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, id);

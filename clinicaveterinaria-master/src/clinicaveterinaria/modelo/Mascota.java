@@ -23,10 +23,10 @@ public class Mascota {
     private double pesoPromedio;
     private LocalDate fechaNacimiento;
     private int codigo;
-    private Cliente idcliente;
+    private int idcliente;
     private int idmascota;
 
-    public Mascota(String especie, String raza, String colorPelo, String sexo, String alias, double pesoPromedio, LocalDate fechaNacimiento, int codigo, Cliente idcliente, int idmascota) {
+    public Mascota(String especie, String raza, String colorPelo, String sexo, String alias, double pesoPromedio, LocalDate fechaNacimiento, int codigo, int idcliente, int idmascota) {
         this.especie = especie;
         this.raza = raza;
         this.colorPelo = colorPelo;
@@ -37,6 +37,10 @@ public class Mascota {
         this.codigo = codigo;
         this.idcliente = idcliente;
         this.idmascota = idmascota;
+    }
+
+    Mascota() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public String getEspecie() {
@@ -103,11 +107,11 @@ public class Mascota {
         this.codigo = codigo;
     }
 
-    public Cliente getIdcliente() {
+    public int getIdcliente() {
         return idcliente;
     }
 
-    public void setIdcliente(Cliente idcliente) {
+    public void setIdcliente(int idcliente) {
         this.idcliente = idcliente;
     }
 

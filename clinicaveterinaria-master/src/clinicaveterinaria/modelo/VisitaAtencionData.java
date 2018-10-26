@@ -34,9 +34,9 @@ public class VisitaAtencionData {
             String sql = "INSERT INTO visitaatencion (idmascota, idtratamiento, detallles, fechavisita, peso) VALUES (?,?,?,?,?);";
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             //statement.setInt(1, visitaAtencion.getMascota().getIdmascota());
-            statement.setInt(1, visitaAtencion.getIdmascota());
+            
             //statement.setInt(2, visitaAtencion.getTratamiento().getIdtratamiento());
-            statement.setInt(2, visitaAtencion.getIdtratamiento());
+           
             statement.setString(3, visitaAtencion.getDetalles());
             statement.setDate(4, Date.valueOf(visitaAtencion.getFechaVisita()));
             statement.setDouble(5, visitaAtencion.getPeso());
@@ -67,9 +67,7 @@ public class VisitaAtencionData {
                 VisitaAtencion visitaatencion;
           
                 while(resultSet.next()){
-                    visitaatencion= new VisitaAtencion();
-                    visitaatencion.setIdmascota(resultSet.getInt("idMascota"));
-                    visitaatencion.setIdtratamiento(resultSet.getInt("idTratamiento"));
+                    visitaatencion = new VisitaAtencion();
                     visitaatencion.setDetalles(resultSet.getString("detalles"));
                     visitaatencion.setFechaVisita(resultSet.getDate("fechaVisita").toLocalDate());
                     visitaatencion.setPeso(resultSet.getDouble("peso"));
@@ -113,14 +111,10 @@ public class VisitaAtencionData {
 
             try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                
-                //statement.setInt(1, visitaAtencion.getMascota().getIdmascota());
-            statement.setInt(1, visitaAtencion.getIdmascota());
-            //statement.setInt(2, visitaAtencion.getTratamiento().getIdtratamiento());
-            statement.setInt(2, visitaAtencion.getIdtratamiento());
-            statement.setString(3, visitaAtencion.getDetalles());
-            statement.setDate(4, Date.valueOf(visitaAtencion.getFechaVisita()));
-            statement.setDouble(5, visitaAtencion.getPeso());
-               statement.executeUpdate();
+            statement.setString(1, visitaAtencion.getDetalles());
+            statement.setDate(2, Date.valueOf(visitaAtencion.getFechaVisita()));
+            statement.setDouble(3, visitaAtencion.getPeso());
+            statement.executeUpdate();
                
   
             }
@@ -143,10 +137,9 @@ public class VisitaAtencionData {
             
             ResultSet resultSet=statement.executeQuery();
             while(resultSet.next()){
-                    visitaatencion= new VisitaAtencion();
+                   visitaatencion= new VisitaAtencion();
+                   
                     visitaatencion.setIdvisitaatencion(resultSet.getInt("idvisitaatencion"));
-                    visitaatencion.setIdmascota(resultSet.getInt("idMascota"));
-                    visitaatencion.setIdtratamiento(resultSet.getInt("idTratamiento"));
                     visitaatencion.setDetalles(resultSet.getString("detallles"));
                     visitaatencion.setFechaVisita(resultSet.getDate("fechaVisita").toLocalDate());
                     visitaatencion.setPeso(resultSet.getDouble("peso"));
