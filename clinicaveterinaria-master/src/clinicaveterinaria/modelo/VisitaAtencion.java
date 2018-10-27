@@ -19,7 +19,7 @@ public class VisitaAtencion {
     private double peso;   
     private int idvisitaatencion;
 
-    public VisitaAtencion(Mascota mascota, Tratamiento tratamiento, String detalles, LocalDate fechaVisita, double peso, int idvisitaatencion) {
+    public VisitaAtencion(Mascota mascota, Tratamiento tratamiento, String detalles, LocalDate fechaVisita, double peso) {
         this.mascota = mascota;
         this.tratamiento = tratamiento;
         this.detalles = detalles;
@@ -29,7 +29,7 @@ public class VisitaAtencion {
     }
 
     VisitaAtencion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      //To change body of generated methods, choose Tools | Templates.
     }
 
     public Mascota getMascota() {

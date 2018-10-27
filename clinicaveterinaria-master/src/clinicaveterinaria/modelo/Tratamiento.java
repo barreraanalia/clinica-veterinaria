@@ -45,16 +45,16 @@ public class Tratamiento {
         this.idtratamiento = idtratamiento;
     }
     
-    //constructor para update
-    /*public Tratamiento(String tipo, int codigoTratamiento, double importe, boolean activo, String descripcion, int idtratamientoint) {
+  /*
+    public Tratamiento(String tipo, int codigoTratamiento, double importe, boolean activo, String descripcion, int idtratamientoint) {
         this.tipo = tipo;
         this.codigoTratamiento = codigoTratamiento;
         this.importe = importe;
         this.activo = activo;
         this.descripcion = descripcion;
         this.idtratamiento = idtratamiento;
-    }*/
-
+    }
+*/
     public Tratamiento() {
     }
 

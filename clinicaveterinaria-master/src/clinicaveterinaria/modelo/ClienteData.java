@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 public class ClienteData {
     
 private Connection conecction= null;
+private Conexion conexion = null;
 
     public ClienteData(Conexion conexion) {
     

@@ -38,7 +38,7 @@ public class Cliente {
     }
 
     
-    Cliente() {
+  public  Cliente() {
         this.idcliente = idcliente;
     }
 

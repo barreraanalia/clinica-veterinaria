@@ -23,10 +23,10 @@ public class Mascota {
     private double pesoPromedio;
     private LocalDate fechaNacimiento;
     private int codigo;
-    private Cliente idcliente;
+    private Cliente cliente;
     private int idmascota;
 
-    public Mascota(String especie, String raza, String colorPelo, String sexo, String alias, double pesoPromedio, LocalDate fechaNacimiento, int codigo, Cliente idcliente, int idmascota) {
+    public Mascota(String especie, String raza, String colorPelo, String sexo, String alias, double pesoPromedio, LocalDate fechaNacimiento, int codigo, Cliente cliente, int idmascota) {
         this.especie = especie;
         this.raza = raza;
         this.colorPelo = colorPelo;
@@ -35,7 +35,7 @@ public class Mascota {
         this.pesoPromedio = pesoPromedio;
         this.fechaNacimiento = fechaNacimiento;
         this.codigo = codigo;
-        this.idcliente = idcliente;
+        this.cliente = cliente;
         this.idmascota = idmascota;
     }
 
@@ -44,7 +44,16 @@ public class Mascota {
     }
 
     public Mascota(String especie, String raza, String colorPelo, String sexo, String alias, LocalDate fechaNacimiento, String codigo, Cliente cliente) {
-      
+      this.especie = especie;
+        this.raza = raza;
+        this.colorPelo = colorPelo;
+        this.sexo = sexo;
+        this.alias = alias;
+        this.pesoPromedio = pesoPromedio;
+        this.fechaNacimiento = fechaNacimiento;
+        
+        this.cliente = cliente;
+        this.idmascota = idmascota;
     }
 
     
@@ -117,12 +126,12 @@ public class Mascota {
         this.codigo = codigo;
     }
 
-    public Cliente getIdcliente() {
-        return idcliente;
+    public Cliente getcliente() {
+        return cliente;
     }
 
-    public void setIdcliente(Cliente idcliente) {
-        this.idcliente = idcliente;
+    public void setcliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public int getIdmascota() {

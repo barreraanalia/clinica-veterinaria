@@ -28,7 +28,15 @@ public class ClinicaVeterinaria {
                 
                 try {
                     conexion = new Conexion("jdbc:mysql://localhost/clinica_veterinaria","root","");
-               
+                    MascotaData mascotadata = new MascotaData (conexion);
+              
+                    List <Mascota> lista2 = new ArrayList<>();
+                    lista2 =  (ArrayList<Mascota>) mascotadata.obtenerMascota();
+            for (Mascota mascota: lista2){
+                System.out.println("nombre"+mascota.getAlias());
+            }
+                    
+                    
          /*       
             Cliente clientes = new Cliente("moreno christian","3584284451","mitre 1224","aishi gimenez",35475534);
                Cliente cliente3 = new Cliente("giuliano escudero","34827482","san martin","timote escudero",472367819);
@@ -40,7 +48,7 @@ public class ClinicaVeterinaria {
                  clientedata.guardarCliente(cliente3);
                  
         
-            MascotaData mascotadata = new MascotaData (conexion);
+            
             Mascota mascota5 = new Mascota("gato","comun","negro","macho","mancha",LocalDate.of(2003, 2, 15),"0301",cliente3);
             Mascota mascota6 = new Mascota("gato pardo","especial","blanco","hembra","vaca",LocalDate.of(2003, 2, 15),"2001",cliente3);
             mascotadata.guardarMascota(mascota);

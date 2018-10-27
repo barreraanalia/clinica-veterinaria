@@ -6,6 +6,8 @@
 package clinicaveterinaria.Vista;
 
 import clinicaveterinaria.modelo.Conexion;
+import clinicaveterinaria.modelo.Mascota;
+import clinicaveterinaria.modelo.Tratamiento;
 import clinicaveterinaria.modelo.VisitaAtencion;
 import clinicaveterinaria.modelo.VisitaAtencionData;
 import java.time.LocalDate;
@@ -223,13 +225,17 @@ public class FormularioVisitas extends javax.swing.JFrame {
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
         // TODO add your handling code here:
-        int idmascota=Integer.parseInt(jtmascota.getText());        
-        int idtratamiento=Integer.parseInt(jttratamiento.getText());
+        int mascota=Integer.parseInt(jtmascota.getText());        
+        int tratamiento=Integer.parseInt(jttratamiento.getText());
         LocalDate fecha= LocalDate.parse(jTextFieldFecha.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         double peso=Double.parseDouble(jTextFieldPeso.getText());
         String detalles=jTextAreaDetalles.getText();
+        Mascota mascotas = new Mascota();
+        mascotas.setIdmascota(mascota);
+        Tratamiento tratamientos = new Tratamiento ();
+        tratamientos.setIdtratamiento(tratamiento);
         
-        VisitaAtencion visita = new VisitaAtencion(mascota, tratamiento, detalles, fecha, peso);
+        VisitaAtencion visita = new VisitaAtencion(mascotas, tratamientos, detalles, fecha, peso);
         visitadata.guardarVisita(visita);
         jTextFieldIdvisita.setText(visita.getIdvisitaatencion()+""); 
     }//GEN-LAST:event_jButtonGuardarActionPerformed

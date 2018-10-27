@@ -24,7 +24,7 @@ import java.util.logging.Logger;
 public class FormularioMascota extends javax.swing.JFrame {
    private MascotaData mascotaData;
    private Conexion conexion;
-
+  
     /**
      * Creates new form FormulariMascota
      */
@@ -434,7 +434,7 @@ public class FormularioMascota extends javax.swing.JFrame {
     mascotaprueba.setSexo(sexo);
     mascotaprueba.setAlias(alias);
     mascotaprueba.setCodigo(codigo);
-    mascotaprueba.setIdcliente(resultado.get(0));
+    mascotaprueba.setcliente(resultado.get(0));
     
        mascotaprueba.setFechaNacimiento(fechaNacimiento);
         mascotaData.guardarMascota(mascotaprueba);
@@ -457,8 +457,10 @@ public class FormularioMascota extends javax.swing.JFrame {
             String alias=jtalias.getText();
             LocalDate fechaNacimiento = LocalDate.parse(jfechaNacimiento.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             String codigo=jtcodigo.getText();
-            String cliente=jtidcliente.getText();
-            Mascota mascota=new Mascota(especie,raza,colorPelo,sexo,alias,fechaNacimiento,codigo,cliente);
+            int cliente=Integer.parseInt(jtidcliente.getText());
+            Cliente clientes = new Cliente();
+            clientes.setId(cliente);
+            Mascota mascota=new Mascota(especie,raza,colorPelo,sexo,alias,fechaNacimiento,codigo,clientes);
         mascotaData.actualizarMascota(mascota);
 
          }
@@ -492,7 +494,7 @@ public class FormularioMascota extends javax.swing.JFrame {
         // TODO add your handling code here:
         int id=Integer.parseInt(jtId.getText());
         
-        Mascota mascota=new MascotaData.buscarMascota(id);
+        Mascota mascota= mascotaData.buscarMascota(id);
         if(mascota!=null){
                 jtId.setText(mascota.getIdmascota()+"");
                 jtespecie.setText(mascota.getEspecie());
@@ -502,7 +504,7 @@ public class FormularioMascota extends javax.swing.JFrame {
                 jtalias.setText(mascota.getAlias());
                 jfechaNacimiento.setText(mascota.getFechaNacimiento().toString());
                 jtcodigo.setText(mascota.getCodigo()+"");
-                jtidcliente.setText(mascota.getIdcliente()+"");
+                jtidcliente.setText(mascota.getcliente()+"");
                 
                 
                 
