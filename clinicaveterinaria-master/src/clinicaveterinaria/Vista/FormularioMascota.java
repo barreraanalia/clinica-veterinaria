@@ -504,7 +504,7 @@ public class FormularioMascota extends javax.swing.JFrame {
                 jtalias.setText(mascota.getAlias());
                 jfechaNacimiento.setText(mascota.getFechaNacimiento().toString());
                 jtcodigo.setText(mascota.getCodigo()+"");
-                jtidcliente.setText(mascota.getcliente()+"");
+                jtidcliente.setText(mascota.getcliente().getId()+"");
                 
                 
                 
