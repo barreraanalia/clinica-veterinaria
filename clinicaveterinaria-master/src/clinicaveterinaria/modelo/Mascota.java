@@ -39,9 +39,19 @@ public class Mascota {
         this.idmascota = idmascota;
     }
 
-    Mascota() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   public  Mascota() {
+        
     }
+
+    public Mascota(String especie, String raza, String colorPelo, String sexo, String alias, LocalDate fechaNacimiento, String codigo, Cliente cliente) {
+      
+    }
+
+    
+
+   
+
+ 
 
     public String getEspecie() {
         return especie;

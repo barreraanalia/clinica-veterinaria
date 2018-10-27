@@ -22,6 +22,7 @@ import java.util.logging.Logger;
  */
 public class MascotaData {
     private Connection connection = null;
+    private Conexion conexion;
 
 public MascotaData (Conexion conexion) {
     try {
@@ -99,9 +100,10 @@ public MascotaData (Conexion conexion) {
                     mascota.setPesoPromedio(resultSet.getDouble("pesoPromedio"));
                     mascota.setFechaNacimiento(resultSet.getDate("fechaNacimiento").toLocalDate());
                     mascota.setCodigo(resultSet.getInt("codigo"));
-                    mascota.setId(resultSet.getInt("idcliente"));
-                
-                   
+                    
+               
+                 Cliente c = buscarCLiente(resultSet.getInt("idcliente"));
+                   mascota.setIdcliente(c);
                     mascotas.add(mascota);
                 }
             }
@@ -113,12 +115,18 @@ public MascotaData (Conexion conexion) {
         return mascotas;
      }
 
+     public Cliente buscarCLiente(int id){
     
+        ClienteData ad=new ClienteData(conexion);
+        
+        return ad.buscarCliente(id);
+        
+    }
      
     public void borrarMascota(int id){
     try {
             
-            String sql = "DELETE FROM mascota WHERE id =?;";
+            String sql = "DELETE FROM mascota WHERE idmascota =?;";
 
         try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             statement.setInt(1, id);
@@ -128,7 +136,7 @@ public MascotaData (Conexion conexion) {
         }
     
         } catch (SQLException ex) {
-            System.out.println("Error al insertar una mascota: " + ex.getMessage());
+            System.out.println("Error al borrar una mascota: " + ex.getMessage());
         }
         
     
@@ -165,7 +173,7 @@ public MascotaData (Conexion conexion) {
     Mascota mascota=null;
     try {
             
-            String sql = "SELECT * FROM mascota WHERE id =?;";
+            String sql = "SELECT * FROM mascota WHERE idmascota =?;";
 
         try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             statement.setInt(1, id);
@@ -183,8 +191,10 @@ public MascotaData (Conexion conexion) {
                 mascota.setPesoPromedio(resultSet.getDouble("pesoPromedio"));
                 mascota.setFechaNacimiento(resultSet.getDate("fechaNacimiento").toLocalDate());
                 mascota.setCodigo(resultSet.getInt("codigo"));
-                mascota.setId(resultSet.getInt("idcliente"));
+                
                
+                Cliente c = buscarCLiente(resultSet.getInt("idcliente"));
+                mascota.setIdcliente(c);
                 
                 
                 

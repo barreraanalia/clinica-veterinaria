@@ -5,11 +5,15 @@
  */
 package clinicaveterinaria.Vista;
 
+import clinicaveterinaria.modelo.Cliente;
+import clinicaveterinaria.modelo.ClienteData;
 import clinicaveterinaria.modelo.Conexion;
 import clinicaveterinaria.modelo.Mascota;
 import clinicaveterinaria.modelo.MascotaData;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -107,7 +111,7 @@ public class FormularioMascota extends javax.swing.JFrame {
 
         jLabel11.setText("jLabel11");
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgenes/visor01.jpg"))); // NOI18N
+         // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 0));
@@ -395,6 +399,7 @@ public class FormularioMascota extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new FormularioMascota().setVisible(true);
             }
@@ -409,15 +414,36 @@ public class FormularioMascota extends javax.swing.JFrame {
         String sexo=jtsexo.getText();
         String alias=jtalias.getText();
         LocalDate fechaNacimiento = LocalDate.parse(jfechaNacimiento.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        String codigo=jtcodigo.getText();
-        String cliente=jtidcliente.getText();
-        
+        int codigo=Integer.parseInt(jtcodigo.getText());
+        String cliente=(jtidcliente.getText());
+        Cliente clientito = null;
+      ClienteData clientedata = new ClienteData(conexion);
+        List <Cliente> lista = new ArrayList<>();
+        List <Cliente> resultado = new ArrayList<>();
+      lista = clientedata.obtenerCliente();
+      for (Cliente a : lista){
+          if (a.getNombreApellido().equals(cliente))
+          resultado.add(a);
+          
+      }
+        // christian
+        Mascota mascotaprueba = new Mascota (); 
+        mascotaprueba.setEspecie(especie);
+    mascotaprueba.setRaza(raza);
+    mascotaprueba.setColorPelo(colorPelo);
+    mascotaprueba.setSexo(sexo);
+    mascotaprueba.setAlias(alias);
+    mascotaprueba.setCodigo(codigo);
+    mascotaprueba.setIdcliente(resultado.get(0));
+    
+       mascotaprueba.setFechaNacimiento(fechaNacimiento);
+        mascotaData.guardarMascota(mascotaprueba);
        
+        jtId.setText(mascotaprueba.getIdmascota()+"");
         
-        Mascota mascota=new Mascota(especie,raza,colorPelo,sexo,alias,fechaNacimiento,codigo,cliente);
-        mascotaData.guardarMascota(mascota);
+    
         
-        jtId.setText(mascota.getId()+"");
+        
         
     }//GEN-LAST:event_jbguardarActionPerformed
 
@@ -467,7 +493,7 @@ public class FormularioMascota extends javax.swing.JFrame {
         
         Mascota mascota=new MascotaData(conexion).buscarMascota(id);
         if(mascota!=null){
-                jtId.setText(mascota.getId()+"");
+                jtId.setText(mascota.getIdmascota()+"");
                 jtespecie.setText(mascota.getEspecie());
                 jtraza.setText(mascota.getRaza());
                 jtcolorPelo.setText(mascota.getColorPelo());
@@ -475,7 +501,7 @@ public class FormularioMascota extends javax.swing.JFrame {
                 jtalias.setText(mascota.getAlias());
                 jfechaNacimiento.setText(mascota.getFechaNacimiento().toString());
                 jtcodigo.setText(mascota.getCodigo()+"");
-                jtidcliente.setText(mascota.getIdCliente()+"");
+                jtidcliente.setText(mascota.getIdcliente()+"");
                 
                 
                 

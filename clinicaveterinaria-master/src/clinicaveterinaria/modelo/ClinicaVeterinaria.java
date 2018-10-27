@@ -28,11 +28,11 @@ public class ClinicaVeterinaria {
                 
                 try {
                     conexion = new Conexion("jdbc:mysql://localhost/clinica_veterinaria","root","");
-              /*  
-                
-               // Cliente clientes = new Cliente("moreno christian","3584284451","mitre 1224","aishi gimenez",35475534);
+               
+         /*       
+            Cliente clientes = new Cliente("moreno christian","3584284451","mitre 1224","aishi gimenez",35475534);
                Cliente cliente3 = new Cliente("giuliano escudero","34827482","san martin","timote escudero",472367819);
-              Mascota mascota = new Mascota("gatito","siames","negro","macho","garfield",LocalDate.of(2005, 3, 16),0001,cliente3);
+              Mascota mascota = new Mascota("gatito","siames","negro","macho","garfield",LocalDate.of(2005, 3, 16),"0401",cliente3);
              // Mascota mascota= new Mascota("gatito","siames","negro","hembra","garfield",LocalDate.of(2009,3,17),0001,cliente3);
                // Mascota mascota2 = new Mascota("perro","mezcla","marron","macho","winquiy",LocalDate.of(2003, 2, 15),0001,clientes);
                // Mascota mascota3 = new Mascota("perro","mezcla","marron","macho","winc",LocalDate.of(2003, 2, 15),0001,clientes);
@@ -41,10 +41,11 @@ public class ClinicaVeterinaria {
                  
         
             MascotaData mascotadata = new MascotaData (conexion);
-            Mascota mascota5 = new Mascota("gato","comun","negro","macho","mancha",LocalDate.of(2003, 2, 15),0001,cliente3);
-            Mascota mascota6 = new Mascota("gato","comun","negro","macho","vaca",LocalDate.of(2003, 2, 15),0001,cliente3);
+            Mascota mascota5 = new Mascota("gato","comun","negro","macho","mancha",LocalDate.of(2003, 2, 15),"0301",cliente3);
+            Mascota mascota6 = new Mascota("gato pardo","especial","blanco","hembra","vaca",LocalDate.of(2003, 2, 15),"2001",cliente3);
             mascotadata.guardarMascota(mascota);
-            // clientes.agregarMascota(mascota);
+            /*
+// clientes.agregarMascota(mascota);
             // clientes.agregarMascota(mascota2);
             // clientes.agregarMascota(mascota3);
             // mascotadata.guardarMascota(mascota);

@@ -8,6 +8,8 @@ package clinicaveterinaria.Vista;
 import clinicaveterinaria.modelo.Cliente;
 import clinicaveterinaria.modelo.ClienteData;
 import clinicaveterinaria.modelo.Conexion;
+import clinicaveterinaria.modelo.Mascota;
+import clinicaveterinaria.modelo.MascotaData;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -15,6 +17,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,7 +28,9 @@ import javax.swing.table.DefaultTableModel;
 public class VistaCliente extends javax.swing.JFrame {
 private DefaultTableModel modelo;
 private ArrayList<Cliente> listaCliente;
-VistaCliente listacliente;    
+VistaCliente listacliente;  
+private DefaultListModel model;
+int busqueda = 0;
 /**
      * Creates new form VistaCliente
      */
@@ -34,6 +39,7 @@ VistaCliente listacliente;
             initComponents();
             Conexion conexion = new Conexion("jdbc:mysql://localhost/clinica_veterinaria", "root", "");
             modelo=new DefaultTableModel();
+            model = new DefaultListModel();
             
             ClienteData clienteData = new ClienteData(conexion);
            listaCliente = (ArrayList<Cliente>) clienteData.obtenerCliente();
@@ -42,10 +48,27 @@ VistaCliente listacliente;
         }
        armaCabeceraTabla();
         cargaDatos();
-    
+   // armarlista();
     }
 
-    
+   /* public void armarlista (){
+     //   model.remove(5);
+        Conexion conexion = null;
+           MascotaData data = new MascotaData (conexion);
+                ArrayList<Mascota> mascotas = new ArrayList();
+            mascotas = (ArrayList) data.obtenerMascota();
+      
+            for (Mascota mascota : mascotas){
+               if (mascota.getIdcliente().equals(busqueda))
+                
+            
+            model.addElement(mascotas);
+            jList1.setModel(model);
+        
+        
+    }
+    }
+    */
  public void armaCabeceraTabla(){
     
         //Titulos de Columnas
@@ -97,7 +120,6 @@ VistaCliente listacliente;
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -164,8 +186,6 @@ VistaCliente listacliente;
             }
         });
 
-        jButton4.setText("jButton4");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -187,8 +207,7 @@ VistaCliente listacliente;
                         .addGap(2, 2, 2)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -202,12 +221,10 @@ VistaCliente listacliente;
                     .addComponent(jButton1)
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addGap(53, 53, 53)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(189, 189, 189)
                 .addComponent(jButton2)
-                .addGap(15, 15, 15))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -238,7 +255,9 @@ VistaCliente listacliente;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 String campo = txtCampo.getText();
         String where = "";
-      borraFilasTabla();
+      
+        borraFilasTabla();
+      
         if (!"".equals(campo)) {
           
             for(Cliente m:listaCliente){
@@ -246,13 +265,18 @@ String campo = txtCampo.getText();
                 if (campo.equals(m.getNombreApellido())   ){
                     
                     modelo.addRow(new Object[]{m.getNombreApellido(),m.getDireccion(),m.getPersonAlternativa(),m.getDocumento()});
-                      
+            busqueda = m.getId();
+                    
+           
             
             }
-                    // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+             
         }
-    }
+        }
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+        
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 FormularioCliente formulariocliente = new FormularioCliente ();
       
@@ -309,7 +333,6 @@ FormularioCliente formulariocliente = new FormularioCliente ();
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
