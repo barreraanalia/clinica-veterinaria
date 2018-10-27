@@ -100,10 +100,11 @@ public MascotaData (Conexion conexion) {
                     mascota.setPesoPromedio(resultSet.getDouble("pesoPromedio"));
                     mascota.setFechaNacimiento(resultSet.getDate("fechanacimiento").toLocalDate());
                     mascota.setCodigo(resultSet.getInt("codigo"));
-                    
+                    Cliente clientes = new Cliente ();
+               clientes.setId(resultSet.getInt("idcliente"));
+                mascota.setcliente(clientes);
                
-                 Cliente c = buscarCLiente(resultSet.getInt("idcliente"));
-                   mascota.setcliente(c);
+
                     mascotas.add(mascota);
                 }
                 statement.close();
@@ -115,6 +116,7 @@ public MascotaData (Conexion conexion) {
         
         return mascotas;
      }
+  
 
      public Cliente buscarCLiente(int id){
     
@@ -193,9 +195,9 @@ public MascotaData (Conexion conexion) {
                 mascota.setFechaNacimiento(resultSet.getDate("fechanacimiento").toLocalDate());
                 mascota.setCodigo(resultSet.getInt("codigo"));
                 
-               
-                Cliente c = buscarCLiente(resultSet.getInt("idcliente"));
-                mascota.setcliente(c);
+               Cliente clientes = new Cliente ();
+               clientes.setId(resultSet.getInt("idcliente"));
+                mascota.setcliente(clientes);
                 
                 
                 

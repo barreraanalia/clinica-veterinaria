@@ -33,7 +33,7 @@ public class ClinicaVeterinaria {
                     List <Mascota> lista2 = new ArrayList<>();
                     lista2 =  (ArrayList<Mascota>) mascotadata.obtenerMascota();
             for (Mascota mascota: lista2){
-                System.out.println("nombre"+mascota.getAlias());
+                System.out.println("nombre "+mascota.getRaza());
             }
                     
                     

@@ -504,7 +504,15 @@ public class FormularioMascota extends javax.swing.JFrame {
                 jtalias.setText(mascota.getAlias());
                 jfechaNacimiento.setText(mascota.getFechaNacimiento().toString());
                 jtcodigo.setText(mascota.getCodigo()+"");
-                jtidcliente.setText(mascota.getcliente().getId()+"");
+                List <Cliente> clientes = new ArrayList <>();
+                ClienteData clientedata= new ClienteData(conexion);
+                clientes = clientedata.obtenerCliente();
+                int busqueda= mascota.getcliente().getId();
+                for (Cliente cliente : clientes)
+                    if (cliente.getId() == busqueda){
+                      jtidcliente.setText  ( cliente.getNombreApellido());
+                    }
+             //   jtidcliente.setText(mascota.getcliente().getId()+"");
                 
                 
                 
