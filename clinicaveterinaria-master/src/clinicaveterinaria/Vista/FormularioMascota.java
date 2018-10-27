@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Usuario
+ * @author barreraanalia
  */
 public class FormularioMascota extends javax.swing.JFrame {
    private MascotaData mascotaData;
@@ -111,7 +111,7 @@ public class FormularioMascota extends javax.swing.JFrame {
 
         jLabel11.setText("jLabel11");
 
-         // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgenes/visor01.jpg"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 0));
@@ -458,7 +458,8 @@ public class FormularioMascota extends javax.swing.JFrame {
             LocalDate fechaNacimiento = LocalDate.parse(jfechaNacimiento.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             String codigo=jtcodigo.getText();
             String cliente=jtidcliente.getText();
-        
+            Mascota mascota=new Mascota(especie,raza,colorPelo,sexo,alias,fechaNacimiento,codigo,cliente);
+        mascotaData.actualizarMascota(mascota);
 
          }
         
@@ -491,7 +492,7 @@ public class FormularioMascota extends javax.swing.JFrame {
         // TODO add your handling code here:
         int id=Integer.parseInt(jtId.getText());
         
-        Mascota mascota=new MascotaData(conexion).buscarMascota(id);
+        Mascota mascota=new MascotaData.buscarMascota(id);
         if(mascota!=null){
                 jtId.setText(mascota.getIdmascota()+"");
                 jtespecie.setText(mascota.getEspecie());

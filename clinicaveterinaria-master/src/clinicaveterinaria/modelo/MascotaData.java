@@ -106,6 +106,7 @@ public MascotaData (Conexion conexion) {
                    mascota.setIdcliente(c);
                     mascotas.add(mascota);
                 }
+                statement.close();
             }
         } catch (SQLException ex) {
             System.out.println("Error al obtener las mascotas: " + ex.getMessage());
@@ -146,7 +147,7 @@ public MascotaData (Conexion conexion) {
     
         try {
             
-            String sql = "UPDATE mascota SET especie = ? ,raza = ? , colorPelo = ?,colorPelo = ?, sexo = ?, alias = ? ,pesoPromedio= ?,  fechaNacimiento = ? , codigo =?, idcliente =? ;";
+            String sql = "UPDATE mascota SET especie = ? ,raza = ? , colorPelo = ?, sexo = ?, alias = ? ,pesoPromedio= ?,  fechaNacimiento = ? , codigo =?, Idcliente =? ;";
 
             try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                statement.setString(1, mascota.getEspecie());
@@ -159,7 +160,7 @@ public MascotaData (Conexion conexion) {
                statement.setInt(8, mascota.getCodigo());
                statement.setInt(9,mascota.getIdcliente().getId());
                statement.executeUpdate();
-               
+               statement.close();
   
             }
     
@@ -200,6 +201,7 @@ public MascotaData (Conexion conexion) {
                 
                 
             }
+            statement.close();
         }
             
             
