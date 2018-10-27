@@ -48,7 +48,7 @@ int busqueda = 0;
         }
        armaCabeceraTabla();
         cargaDatos();
-    armarlista();
+   // armarlista();
     }
 
    /* public void armarlista (){
