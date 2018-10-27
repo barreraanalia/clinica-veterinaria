@@ -96,9 +96,9 @@ public MascotaData (Conexion conexion) {
                     mascota.setRaza(resultSet.getString("raza"));
                     mascota.setColorPelo(resultSet.getString("colorPelo"));
                     mascota.setSexo(resultSet.getString("sexo"));
-                    mascota.setAlias(resultSet.getString("Alias"));
+                    mascota.setAlias(resultSet.getString("alias"));
                     mascota.setPesoPromedio(resultSet.getDouble("pesoPromedio"));
-                    mascota.setFechaNacimiento(resultSet.getDate("fechaNacimiento").toLocalDate());
+                    mascota.setFechaNacimiento(resultSet.getDate("fechanacimiento").toLocalDate());
                     mascota.setCodigo(resultSet.getInt("codigo"));
                     
                
@@ -147,7 +147,7 @@ public MascotaData (Conexion conexion) {
     
         try {
             
-            String sql = "UPDATE mascota SET especie = ? ,raza = ? , colorPelo = ?, sexo = ?, alias = ? ,pesoPromedio= ?,  fechaNacimiento = ? , codigo =?, Idcliente =? ;";
+            String sql = "UPDATE mascota SET especie = ? ,raza = ? , colorPelo = ?, sexo = ?, alias = ? ,pesoPromedio= ?,  fechanacimiento = ? , codigo =?, Idcliente =? ;";
 
             try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                statement.setString(1, mascota.getEspecie());
@@ -190,7 +190,7 @@ public MascotaData (Conexion conexion) {
                 mascota.setSexo(resultSet.getString("sexo"));
                 mascota.setAlias(resultSet.getString("alias"));
                 mascota.setPesoPromedio(resultSet.getDouble("pesoPromedio"));
-                mascota.setFechaNacimiento(resultSet.getDate("fechaNacimiento").toLocalDate());
+                mascota.setFechaNacimiento(resultSet.getDate("fechanacimiento").toLocalDate());
                 mascota.setCodigo(resultSet.getInt("codigo"));
                 
                
