@@ -36,7 +36,7 @@ public MascotaData (Conexion conexion) {
     
   public void  guardarMascota(Mascota mascota){
         try {
-            String sql = "INSERT INTO mascota (especie,raza,colorPelo,sexo,alias,pesoPromedio,fechaNacimiento,codigo,idcliente) VALUES (?,?,?,?,?,?,?,?,?);";
+            String sql = "INSERT INTO mascota (especie,raza,colorPelo,sexo,alias,pesoPromedio,fechanacimiento,codigo,idcliente) VALUES (?,?,?,?,?,?,?,?,?);";
             
             
             PreparedStatement statement = null;
