@@ -116,7 +116,45 @@ public MascotaData (Conexion conexion) {
         
         return mascotas;
      }
-  
+   public List<Mascota> obtenerMascotacliente(int id){
+        List<Mascota> mascotas = new ArrayList<>();
+            
+
+        try {
+            String sql;
+            sql = "SELECT * FROM mascota WHERE idcliente = ?;";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setInt(1,id);
+            
+                ResultSet resultSet = statement.executeQuery();
+                Mascota mascota;
+          
+                while(resultSet.next()){
+                    mascota = new Mascota();
+                    mascota.setEspecie(resultSet.getString("especie"));
+                    mascota.setRaza(resultSet.getString("raza"));
+                    mascota.setColorPelo(resultSet.getString("colorPelo"));
+                    mascota.setSexo(resultSet.getString("sexo"));
+                    mascota.setAlias(resultSet.getString("alias"));
+                    mascota.setPesoPromedio(resultSet.getDouble("pesoPromedio"));
+                    mascota.setFechaNacimiento(resultSet.getDate("fechanacimiento").toLocalDate());
+                    mascota.setCodigo(resultSet.getInt("codigo"));
+                    Cliente clientes = new Cliente ();
+               clientes.setId(resultSet.getInt("idcliente"));
+                mascota.setcliente(clientes);
+               
+
+                    mascotas.add(mascota);
+                }
+                statement.close();
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener las mascotas: " + ex.getMessage());
+        }
+        
+        
+        return mascotas;
+     }
 
      public Cliente buscarCLiente(int id){
     

@@ -16,7 +16,7 @@ public class Cliente {
  private long documento;
  private ArrayList <Mascota> mascota = new ArrayList<>();
  
- private int idcliente=-1;
+ private int idcliente;
  
 
     public Cliente(int idcliente, String nombreApellido, String telefono, String direccion, String personAlternativa, long documento, Mascota mascota) {
@@ -102,6 +102,11 @@ public class Cliente {
      mascota.add(mascotas);
      
  }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "nombreApellido=" + nombreApellido + ", telefono=" + telefono + ", direccion=" + direccion + ", personAlternativa=" + personAlternativa + ", documento=" + documento + ", mascota=" + mascota + ", idcliente=" + idcliente + '}';
+    }
  
  
  

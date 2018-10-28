@@ -31,11 +31,11 @@ public class VisitaAtencionData {
     
     public void guardarVisita (VisitaAtencion visitaAtencion) {
         try {
-            String sql = "INSERT INTO visitaatencion (idmascota, idtratamiento, detallles, fechavisita, peso) VALUES (?,?,?,?,?);";
+            String sql = "INSERT INTO visitaatencion (idmascota, idtratamiento, detalles, fecha, peso) VALUES (?,?,?,?,?);";
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            //statement.setInt(1, visitaAtencion.getMascota().getIdmascota());
+            statement.setInt(1, visitaAtencion.getMascota().getIdmascota());
             
-            //statement.setInt(2, visitaAtencion.getTratamiento().getIdtratamiento());
+            statement.setInt(2, visitaAtencion.getTratamiento().getIdtratamiento());
            
             statement.setString(3, visitaAtencion.getDetalles());
             statement.setDate(4, Date.valueOf(visitaAtencion.getFechaVisita()));

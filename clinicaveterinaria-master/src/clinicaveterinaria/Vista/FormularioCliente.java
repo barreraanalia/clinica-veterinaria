@@ -326,7 +326,9 @@ jTextTelefono.setText("");
     }//GEN-LAST:event_jnuevoActionPerformed
 
     private void jactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jactualizarActionPerformed
- if (jTextID.getText()!=null){
+ 
+        
+        if (jTextID.getText()!=null){
         String telefono=jTextTelefono.getText();
         String nombre=jtextnombre.getText();
         String direccion=jTextdireccion.getText();
@@ -334,6 +336,7 @@ jTextTelefono.setText("");
         int dni= Integer.parseInt(jtextdni.getText());
         
         Cliente cliente=new Cliente(nombre,telefono,direccion,alternativa,dni);
+        cliente.setId(Integer.parseInt(jTextID.getText()));
         clientedata.actualizarCliente(cliente);        // TODO add your handling code here:
     }//GEN-LAST:event_jactualizarActionPerformed
     }

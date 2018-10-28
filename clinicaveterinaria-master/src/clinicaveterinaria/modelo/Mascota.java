@@ -142,6 +142,12 @@ public class Mascota {
         this.idmascota = idmascota;
     }
 
+    @Override
+    public String toString() {
+    
+    return "nombre:"+alias+" especie:"+especie+" sexo:"+sexo;
+    }
+
     
     }
 

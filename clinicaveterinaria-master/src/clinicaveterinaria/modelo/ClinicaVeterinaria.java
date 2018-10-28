@@ -31,19 +31,21 @@ public class ClinicaVeterinaria {
                     MascotaData mascotadata = new MascotaData (conexion);
               
                     List <Mascota> lista2 = new ArrayList<>();
-                    lista2 =  (ArrayList<Mascota>) mascotadata.obtenerMascota();
+                   lista2=  mascotadata.obtenerMascotacliente(1);
             for (Mascota mascota: lista2){
                 System.out.println("nombre "+mascota.getRaza());
             }
-                    
-                    
-         /*       
+                
+           
+            
+         /*           
+                
             Cliente clientes = new Cliente("moreno christian","3584284451","mitre 1224","aishi gimenez",35475534);
                Cliente cliente3 = new Cliente("giuliano escudero","34827482","san martin","timote escudero",472367819);
               Mascota mascota = new Mascota("gatito","siames","negro","macho","garfield",LocalDate.of(2005, 3, 16),"0401",cliente3);
-             // Mascota mascota= new Mascota("gatito","siames","negro","hembra","garfield",LocalDate.of(2009,3,17),0001,cliente3);
-               // Mascota mascota2 = new Mascota("perro","mezcla","marron","macho","winquiy",LocalDate.of(2003, 2, 15),0001,clientes);
-               // Mascota mascota3 = new Mascota("perro","mezcla","marron","macho","winc",LocalDate.of(2003, 2, 15),0001,clientes);
+              Mascota mascota1= new Mascota("gatito","siames","negro","hembra","garfield",LocalDate.of(2009,3,17),"0001",cliente3);
+                Mascota mascota2 = new Mascota("perro","mezcla","marron","macho","winquiy",LocalDate.of(2003, 2, 15),"0001",clientes);
+               Mascota mascota3 = new Mascota("perro","mezcla","marron","macho","winc",LocalDate.of(2003, 2, 15),"0001",clientes);
               ClienteData clientedata = new ClienteData(conexion);
                  clientedata.guardarCliente(cliente3);
                  
