@@ -15,6 +15,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -64,7 +65,7 @@ public void armarlista (){
         
         
     
-     jList1.setModel(model);
+     jTable2.setModel(modelo);
     
     }
  
@@ -140,12 +141,13 @@ public void armarlista (){
         jbbuscaringreso = new javax.swing.JButton();
         jbvolveratras = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jTable2 = new javax.swing.JTable();
+        jbrefrescar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 102));
 
-        jPanel1.setBackground(new java.awt.Color(255, 153, 204));
+        jPanel1.setBackground(new java.awt.Color(153, 255, 153));
         jPanel1.setToolTipText("");
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -209,7 +211,26 @@ public void armarlista (){
             }
         });
 
-        jScrollPane2.setViewportView(jList1);
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        jbrefrescar.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        jbrefrescar.setText("REFRESCAR");
+        jbrefrescar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbrefrescarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -219,21 +240,7 @@ public void armarlista (){
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(jLabel1)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TexCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbbuscarmascota)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                        .addComponent(jbcrearmascota))
+                        .addComponent(jScrollPane1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -249,9 +256,21 @@ public void armarlista (){
                                 .addGap(18, 18, 18)
                                 .addComponent(jbbuscaringreso))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(17, 17, 17)
+                                .addComponent(jLabel1)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TexCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbbuscarmascota)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                        .addComponent(jbrefrescar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbcrearmascota)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -264,18 +283,19 @@ public void armarlista (){
                     .addComponent(jLabel2)
                     .addComponent(TexCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbbuscarmascota)
-                    .addComponent(jbcrearmascota))
-                .addGap(57, 57, 57)
+                    .addComponent(jbcrearmascota)
+                    .addComponent(jbrefrescar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(79, 79, 79)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbbuscaringreso))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jbvolveratras)
                 .addContainerGap())
         );
@@ -324,38 +344,50 @@ public void armarlista (){
 
     private void jbbuscaringresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbbuscaringresoActionPerformed
         model.clear();
-        String campo = jbuscar.getText();
+        String campo = buscar.getText();
+        List<Mascota> lista = new ArrayList<>();
  for(Mascota m:listaMascota){
-                
-                if (campo.equals(m.getAlias())){
-                    busqueda = m.getcliente().getId();
-                }
- }
-for (Cliente cliente : clientes){
-  if(busqueda== cliente.getId()){
+               
+                    if (campo.equals(m.getIdmascota())){
+                  
+                    
+                    busqueda = m.getIdmascota();    
+                    for (Cliente cliente : clientes){
+                    if(busqueda== cliente.getIdmascota().getId())
                 
             
             model.addElement(cliente);
-}
+}         
+                    }else if (!campo.equals(m.getIdmascota()))
+                    
+                    
+                    {
+      model.clear();
+        }
 // TODO add your handling code here:
     }//GEN-LAST:event_jbbuscaringresoActionPerformed
 }
     private void jbvolveratrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbvolveratrasActionPerformed
-  /*    FormularioMascota formulariomascota = new FormularioMascota ();
+     FormularioMascota formulariomascota = new FormularioMascota ();
       
   formulariomascota.setVisible(true);
         VistaMascota.this.dispose();
-  */  
+    
 // TODO add your handling code here:
     }//GEN-LAST:event_jbvolveratrasActionPerformed
 
     private void jbcrearmascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcrearmascotaActionPerformed
-  /*   FormularioMascota formulariomascota = new FormularioMascota ();
+     FormularioMascota formulariomascota = new FormularioMascota ();
       
   formulariomascota.setVisible(true);
         VistaMascota.this.dispose(); 
 // TODO add your handling code here:*/
     }//GEN-LAST:event_jbcrearmascotaActionPerformed
+
+    private void jbrefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbrefrescarActionPerformed
+cargaDatos();
+// TODO add your handling code here:
+    }//GEN-LAST:event_jbrefrescarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -398,14 +430,15 @@ for (Cliente cliente : clientes){
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JButton jbbuscaringreso;
     private javax.swing.JButton jbbuscarmascota;
     private javax.swing.JButton jbcrearmascota;
+    private javax.swing.JButton jbrefrescar;
     private javax.swing.JTextField jbuscar;
     private javax.swing.JButton jbvolveratras;
     // End of variables declaration//GEN-END:variables
