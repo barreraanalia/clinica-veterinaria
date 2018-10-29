@@ -63,7 +63,7 @@ public void armarlista (){
         
         
     
-     jLista2.setModel(model);
+     jList2.setModel(model);
     }
  
  public void armaCabeceraTabla(){
