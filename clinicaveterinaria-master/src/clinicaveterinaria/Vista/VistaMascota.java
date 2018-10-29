@@ -26,6 +26,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VistaMascota extends javax.swing.JFrame {
     private DefaultTableModel modelo;
+    
 private ArrayList<Mascota> listaMascota;
 VistaMascota listamascota;  
 private DefaultListModel model;
@@ -42,8 +43,8 @@ private ArrayList<Cliente> clientes;
             modelo=new DefaultTableModel();
             model = new DefaultListModel();
             ClienteData data = new ClienteData (conexion);
-              
-           Clientes = (ArrayList) data.obtenerMascotas();
+            MascotaData mascotaData = new MascotaData(conexion);  
+           clientes = (ArrayList) data.obtenerCliente();
             ClienteData clienteData = new ClienteData(conexion);
            listaMascota = (ArrayList<Mascota>) mascotaData.obtenerMascota();
         } catch (ClassNotFoundException ex) {
@@ -63,7 +64,8 @@ public void armarlista (){
         
         
     
-     jList2.setModel(model);
+     jList1.setModel(model);
+    
     }
  
  public void armaCabeceraTabla(){
@@ -104,12 +106,10 @@ public void armarlista (){
         }
     }   
 
-    private void initComponents() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
         
         
-    }
+    
         
 
 
@@ -139,7 +139,8 @@ public void armarlista (){
         jbuscar = new javax.swing.JTextField();
         jbbuscaringreso = new javax.swing.JButton();
         jbvolveratras = new javax.swing.JButton();
-        jList2 = new javax.swing.JFormattedTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 102));
@@ -208,11 +209,7 @@ public void armarlista (){
             }
         });
 
-        jList2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jList2ActionPerformed(evt);
-            }
-        });
+        jScrollPane2.setViewportView(jList1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -240,6 +237,9 @@ public void armarlista (){
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(jbvolveratras, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(19, 19, 19)
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
@@ -249,14 +249,10 @@ public void armarlista (){
                                 .addGap(18, 18, 18)
                                 .addComponent(jbbuscaringreso))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(jbvolveratras, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(29, 29, 29)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addComponent(jList2, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,9 +273,9 @@ public void armarlista (){
                     .addComponent(jLabel4)
                     .addComponent(jbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbbuscaringreso))
-                .addGap(18, 18, 18)
-                .addComponent(jList2, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addComponent(jbvolveratras)
                 .addContainerGap())
         );
@@ -303,7 +299,7 @@ public void armarlista (){
     }//GEN-LAST:event_TexCampoActionPerformed
 
     private void jbbuscarmascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbbuscarmascotaActionPerformed
-        String campo = txtCampo.getText();
+        String campo = TexCampo.getText();
         String where = "";
       
         borraFilasTabla();
@@ -312,10 +308,10 @@ public void armarlista (){
           
             for(Mascota m:listaMascota){
                 
-                if (campo.equals(m.getNombreApellido())   ){
+                if (campo.equals(m.getAlias())   ){
                     
-                    modelo.addRow(new Object[]{m.getEspecie(),m.getRaza(),m.getColorPelo(),m.getSexo(),m.getAlias(),m.getFechaNacimiento,m.getCodigo(),m.getCliente()});
-            busqueda = m.getId();
+                    modelo.addRow(new Object[]{m.getEspecie(),m.getRaza(),m.getColorPelo(),m.getSexo(),m.getAlias(),m.getFechaNacimiento(),m.getCodigo(),m.getcliente().getId()});
+            busqueda = m.getIdmascota();
                     
            
             
@@ -328,41 +324,37 @@ public void armarlista (){
 
     private void jbbuscaringresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbbuscaringresoActionPerformed
         model.clear();
-        String campo = buscar.getText();
+        String campo = jbuscar.getText();
  for(Mascota m:listaMascota){
                 
-                if (campo.equals(m.getId())){
-                    busqueda = m.getId();
+                if (campo.equals(m.getAlias())){
+                    busqueda = m.getcliente().getId();
                 }
  }
-for (Cliente cliente : cliente){
-  if(busqueda== cliente.getmascota().getId())
+for (Cliente cliente : clientes){
+  if(busqueda== cliente.getId()){
                 
             
             model.addElement(cliente);
-  
+}
 // TODO add your handling code here:
     }//GEN-LAST:event_jbbuscaringresoActionPerformed
-
+}
     private void jbvolveratrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbvolveratrasActionPerformed
-      FormularioCliente formulariocliente = new FormularioCliente ();
+  /*    FormularioMascota formulariomascota = new FormularioMascota ();
       
   formulariomascota.setVisible(true);
         VistaMascota.this.dispose();
-    
+  */  
 // TODO add your handling code here:
     }//GEN-LAST:event_jbvolveratrasActionPerformed
 
-    private void jList2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jList2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jList2ActionPerformed
-
     private void jbcrearmascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcrearmascotaActionPerformed
-     FormularioMascota formulariomascota = new FormularioMascota ();
+  /*   FormularioMascota formulariomascota = new FormularioMascota ();
       
   formulariomascota.setVisible(true);
         VistaMascota.this.dispose(); 
-// TODO add your handling code here:
+// TODO add your handling code here:*/
     }//GEN-LAST:event_jbcrearmascotaActionPerformed
 
     /**
@@ -406,9 +398,10 @@ for (Cliente cliente : cliente){
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JFormattedTextField jList2;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton jbbuscaringreso;
     private javax.swing.JButton jbbuscarmascota;
