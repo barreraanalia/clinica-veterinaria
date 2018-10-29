@@ -18,6 +18,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
      */
     public VistaPrincipal() {
         initComponents();
+    this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+    
+    
     }
 
     /**
@@ -47,6 +50,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         Escritorio.setBackground(new java.awt.Color(102, 255, 255));
+        Escritorio.setPreferredSize(new java.awt.Dimension(800, 6));
 
         javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
         Escritorio.setLayout(EscritorioLayout);
@@ -56,7 +60,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 304, Short.MAX_VALUE)
+            .addGap(0, 315, Short.MAX_VALUE)
         );
 
         jMenuArchivo.setText("Archivo");
@@ -73,7 +77,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jMenuCliente.setText("Clientes");
 
-        jMenuClienteFormulario.setText("Formulario");
+        jMenuClienteFormulario.setText("Clientes lista");
         jMenuClienteFormulario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuClienteFormularioActionPerformed(evt);
@@ -116,14 +120,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Escritorio, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(Escritorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE))
         );
 
         pack();
@@ -136,7 +139,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void jMenuClienteFormularioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClienteFormularioActionPerformed
         Escritorio.removeAll();
         Escritorio.repaint();
-        FormularioCliente fc = new FormularioCliente();
+        VistaCliente fc = new VistaCliente();
         fc.setVisible(true);
         Escritorio.add(fc);
         Escritorio.moveToFront(fc);
