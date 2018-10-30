@@ -114,7 +114,7 @@ public class FormularioMascota extends javax.swing.JFrame {
 
         jLabel11.setText("jLabel11");
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgenes/visor01.jpg"))); // NOI18N
+        
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 0));
