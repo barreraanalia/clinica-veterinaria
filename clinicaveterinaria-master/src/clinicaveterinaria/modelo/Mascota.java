@@ -145,7 +145,7 @@ public class Mascota {
     @Override
     public String toString() {
     
-    return "nombre:"+alias+" especie:"+especie+" sexo:"+sexo;
+    return idmascota+ "-"+ alias;
     }
 
     

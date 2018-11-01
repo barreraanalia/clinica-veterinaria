@@ -61,7 +61,9 @@ public class VisitaAtencionData {
 
         try {
             String sql;
+            String sql2;
             sql = "SELECT * FROM visitaatencion;";
+            
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 ResultSet resultSet = statement.executeQuery();
                 VisitaAtencion visitaatencion;
@@ -69,11 +71,16 @@ public class VisitaAtencionData {
                 while(resultSet.next()){
                     visitaatencion = new VisitaAtencion();
                     visitaatencion.setDetalles(resultSet.getString("detalles"));
-                    visitaatencion.setFechaVisita(resultSet.getDate("fechaVisita").toLocalDate());
+                    visitaatencion.setFechaVisita(resultSet.getDate("fecha").toLocalDate());
                     visitaatencion.setPeso(resultSet.getDouble("peso"));
-                    
+                    Mascota mascota = new Mascota();
+                    mascota.setIdmascota(resultSet.getInt("idmascota"));
+                    Tratamiento tratamiento = new Tratamiento ();
+                    tratamiento.setIdtratamiento(resultSet.getInt("idtratamiento"));
                    
-                   visitasatenciones.add(visitaatencion);
+                   visitaatencion.setMascota(mascota);
+                   visitaatencion.setTratamiento(tratamiento);
+                    visitasatenciones.add(visitaatencion);
                 }
             }
         } catch (SQLException ex) {
@@ -107,7 +114,7 @@ public class VisitaAtencionData {
     
         try {
             
-            String sql = "UPDATE visitaatencion SET idmascota = ?, idtratamiento = ? , detalles =? fechavisita=?, peso=? WHERE idvisitaatencion = ?;";
+            String sql = "UPDATE visitaatencion SET idmascota = ?, idtratamiento = ? , detalles =? fecha=?, peso=? WHERE idvisitaatencion = ?;";
 
             try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                
@@ -141,9 +148,15 @@ public class VisitaAtencionData {
                    
                     visitaatencion.setIdvisitaatencion(resultSet.getInt("idvisitaatencion"));
                     visitaatencion.setDetalles(resultSet.getString("detallles"));
-                    visitaatencion.setFechaVisita(resultSet.getDate("fechaVisita").toLocalDate());
+                    visitaatencion.setFechaVisita(resultSet.getDate("fecha").toLocalDate());
                     visitaatencion.setPeso(resultSet.getDouble("peso"));
-                                                            
+                                   Mascota mascota = new Mascota();
+                    mascota.setIdmascota(resultSet.getInt("idmascota"));
+                    Tratamiento tratamiento = new Tratamiento ();
+                    tratamiento.setIdtratamiento(resultSet.getInt("idtratamiento"));
+                   visitaatencion.setMascota(mascota);
+                   visitaatencion.setTratamiento(tratamiento);
+                                           
                     
             }
             statement.close();

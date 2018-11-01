@@ -109,6 +109,11 @@ public class Tratamiento {
     public void setIdtratamiento(int idtratamiento) {
         this.idtratamiento = idtratamiento;
     }
+
+    @Override
+    public String toString() {
+        return  tipo + " " + importe;
+    }
     
     
     

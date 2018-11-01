@@ -28,7 +28,7 @@ public class VisitaAtencion {
         this.idvisitaatencion = idvisitaatencion;
     }
 
-    VisitaAtencion() {
+    public VisitaAtencion() {
       //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -78,6 +78,11 @@ public class VisitaAtencion {
 
     public void setIdvisitaatencion(int idvisitaatencion) {
         this.idvisitaatencion = idvisitaatencion;
+    }
+
+    @Override
+    public String toString() {
+        return "VisitaAtencion{" + "mascota=" + mascota + ", tratamiento=" + tratamiento + ", detalles=" + detalles + ", fechaVisita=" + fechaVisita + ", peso=" + peso + ", idvisitaatencion=" + idvisitaatencion + '}';
     }
 
 }

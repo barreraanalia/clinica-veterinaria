@@ -92,6 +92,7 @@ public MascotaData (Conexion conexion) {
           
                 while(resultSet.next()){
                     mascota = new Mascota();
+                    mascota.setIdmascota(resultSet.getInt("idmascota"));
                     mascota.setEspecie(resultSet.getString("especie"));
                     mascota.setRaza(resultSet.getString("raza"));
                     mascota.setColorPelo(resultSet.getString("colorPelo"));
