@@ -27,10 +27,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VistaMascota extends javax.swing.JFrame {
     private DefaultTableModel modelo;
-    
+    private DefaultTableModel model;
 private ArrayList<Mascota> listaMascota;
 VistaMascota listamascota;  
-private DefaultListModel model;
+
 int busqueda = 0;
 private ArrayList<Cliente> clientes;
 
@@ -42,7 +42,7 @@ private ArrayList<Cliente> clientes;
             initComponents();
             Conexion conexion = new Conexion("jdbc:mysql://localhost/clinica_veterinaria", "root", "");
             modelo=new DefaultTableModel();
-            model = new DefaultListModel();
+            model = new DefaultTableModel();
             ClienteData data = new ClienteData (conexion);
             MascotaData mascotaData = new MascotaData(conexion);  
            clientes = (ArrayList) data.obtenerCliente();
@@ -53,33 +53,75 @@ private ArrayList<Cliente> clientes;
         }
      armaCabeceraTabla();
         cargaDatos();
-   armarlista ();
+     cargaMascota();
+        armaCabeceraTabla2();
+        cargaDatos2();
     }
-public void armarlista (){
-      
+
+public void cargaMascota(){
+    //Carga las mascotas al ComboBox
+    
+    for(Mascota item:listaMascota){
+            jComboBox1.addItem(item);
+    }
+
+}
+ public void cargaDatos2(){
+            
+        
+        
+        
+            Mascota mas=(Mascota) jComboBox1.getSelectedItem();
+         
+        
+        for(Cliente m: clientes){
+        
+
+            if(m.getId()==mas.getcliente().getId()){
+            
+            model.addRow(new Object[]{m.getNombreApellido(),m.getDocumento(),m.getTelefono()});
+            }           
+        }
+    }
+  public void armaCabeceraTabla2(){
+    
+        //Titulos de Columnas
+        ArrayList<Object> columnas=new ArrayList<Object>();
+       columnas.add("nombre");
+        columnas.add("dni");
+        columnas.add("documento");
+        columnas.add("telefono");
        
-           
       
-           
-           
+        for(Object it:columnas){
         
-        
-    
-     jTable2.setModel(modelo);
-    
-    }
+            model.addColumn(it);
+        }
+        jTable2.setModel(model);
+  }
+      public void borraFilasTabla2(){
+
+            int a =model.getRowCount()-1;
+            System.out.println("Tabla "+a);
+            for(int i=a;i>=0;i--){
+                model.removeRow(i );
+                System.out.println("Tabla "+i);
+            }
+      }
+ 
  
  public void armaCabeceraTabla(){
     
         //Titulos de Columnas
         ArrayList<Object> columnas=new ArrayList<Object>();
-        columnas.add("Especie");
+       columnas.add("Especie");
         columnas.add("Raza");
         columnas.add("colorPelo");
         columnas.add("sexo");
         columnas.add("alias");
         columnas.add("fechaNacimiento");
         columnas.add("codigo");
+      
         for(Object it:columnas){
         
             modelo.addColumn(it);
@@ -127,6 +169,9 @@ public void armarlista (){
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -136,17 +181,28 @@ public void armarlista (){
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        jbuscar = new javax.swing.JTextField();
-        jbbuscaringreso = new javax.swing.JButton();
-        jbvolveratras = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jbrefrescar = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 102));
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(153, 255, 153));
         jPanel1.setToolTipText("");
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -190,22 +246,7 @@ public void armarlista (){
         jScrollPane1.setViewportView(jTable1);
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel3.setText("BUSCAR CLIENTE ");
-
-        jbbuscaringreso.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
-        jbbuscaringreso.setText("BUSCAR");
-        jbbuscaringreso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbbuscaringresoActionPerformed(evt);
-            }
-        });
-
-        jbvolveratras.setText("VOLVER ATRAS");
-        jbvolveratras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbvolveratrasActionPerformed(evt);
-            }
-        });
+        jLabel3.setText("Buscar cliente por mascota");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -225,6 +266,12 @@ public void armarlista (){
         jbrefrescar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbrefrescarActionPerformed(evt);
+            }
+        });
+
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
             }
         });
 
@@ -252,18 +299,13 @@ public void armarlista (){
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(jbvolveratras, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(17, 17, 17)
                                 .addComponent(jLabel1))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel3)
+                                .addGap(19, 19, 19)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jbbuscaringreso)))
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -284,14 +326,52 @@ public void armarlista (){
                 .addGap(79, 79, 79)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbbuscaringreso))
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(jbvolveratras)
-                .addContainerGap())
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(117, Short.MAX_VALUE))
         );
+
+        jMenu3.setText("archivo");
+
+        jMenuItem1.setText("clientes");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
+
+        jMenuItem2.setText("atencion");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem2);
+
+        jMenuItem3.setText("tratamientos");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem3);
+
+        jMenuItem4.setText("salir");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem4);
+
+        jMenuBar2.add(jMenu3);
+
+        jMenu4.setText("about");
+        jMenuBar2.add(jMenu4);
+
+        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -335,45 +415,12 @@ public void armarlista (){
 // TODO add your handling code here:
     }//GEN-LAST:event_jbbuscarmascotaActionPerformed
 
-    private void jbbuscaringresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbbuscaringresoActionPerformed
-        model.clear();
-        String campo = jbuscar.getText();
-        List<Mascota> lista = new ArrayList<>();
- for(Mascota m:listaMascota){
-               
-                    if (campo.equals(m.getIdmascota())){
-                  
-                    
-                    busqueda = m.getIdmascota();    
-                    for (Cliente cliente : clientes){
-                    if(busqueda== cliente.getId());
-                
-            
-            model.addElement(cliente);
-}         
-                    }else if (!campo.equals(m.getIdmascota()))
-                    
-                    
-                    {
-      model.clear();
-        }
-// TODO add your handling code here:
-    }//GEN-LAST:event_jbbuscaringresoActionPerformed
-}
-    private void jbvolveratrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbvolveratrasActionPerformed
-     FormularioMascota formulariomascota = new FormularioMascota ();
-      
-  formulariomascota.setVisible(true);
-        VistaMascota.this.dispose();
-    
-// TODO add your handling code here:
-    }//GEN-LAST:event_jbvolveratrasActionPerformed
-
     private void jbcrearmascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcrearmascotaActionPerformed
      FormularioMascota formulariomascota = new FormularioMascota ();
       
   formulariomascota.setVisible(true);
         VistaMascota.this.dispose(); 
+         
 // TODO add your handling code here:*/
     }//GEN-LAST:event_jbcrearmascotaActionPerformed
 
@@ -381,6 +428,38 @@ public void armarlista (){
 cargaDatos();
 // TODO add your handling code here:
     }//GEN-LAST:event_jbrefrescarActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+
+borraFilasTabla2();
+        cargaDatos2();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+ FormularioVisitas visitas = new FormularioVisitas ();
+      
+  visitas.setVisible(true);
+        VistaMascota.this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+ VistaCliente cliente = new VistaCliente ();
+      
+  cliente.setVisible(true);
+        VistaMascota.this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+ FormularioTratamiento tratamiento = new FormularioTratamiento ();
+      
+  tratamiento.setVisible(true);
+        VistaMascota.this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+System.exit(WIDTH);        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -419,19 +498,27 @@ cargaDatos();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField TexCampo;
+    private javax.swing.JComboBox<Mascota> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JButton jbbuscaringreso;
     private javax.swing.JButton jbbuscarmascota;
     private javax.swing.JButton jbcrearmascota;
     private javax.swing.JButton jbrefrescar;
-    private javax.swing.JTextField jbuscar;
-    private javax.swing.JButton jbvolveratras;
     // End of variables declaration//GEN-END:variables
 }

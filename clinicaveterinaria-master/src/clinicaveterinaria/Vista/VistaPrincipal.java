@@ -153,12 +153,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
         fc.setVisible(true);
         Escritorio.add(fc);
         Escritorio.moveToFront(fc);
+      
     }//GEN-LAST:event_jMenuClienteFormularioActionPerformed
 
     private void jMenuMascotaFormularioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMascotaFormularioActionPerformed
         Escritorio.removeAll();
         Escritorio.repaint();
-        FormularioMascota fm = new FormularioMascota();
+        VistaMascota fm = new VistaMascota();
         fm.setVisible(true);
         Escritorio.add(fm);
         Escritorio.moveToFront(fm);

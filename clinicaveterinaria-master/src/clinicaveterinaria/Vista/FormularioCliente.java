@@ -187,7 +187,7 @@ private Conexion conexion;
             }
         });
 
-        jButton1.setText("Volver");
+        jButton1.setText("Volver a lista cliente");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

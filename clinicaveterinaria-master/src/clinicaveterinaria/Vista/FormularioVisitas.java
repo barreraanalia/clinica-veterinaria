@@ -5,24 +5,33 @@
  */
 package clinicaveterinaria.Vista;
 
+import clinicaveterinaria.modelo.Cliente;
 import clinicaveterinaria.modelo.Conexion;
 import clinicaveterinaria.modelo.Mascota;
+import clinicaveterinaria.modelo.MascotaData;
 import clinicaveterinaria.modelo.Tratamiento;
+import clinicaveterinaria.modelo.TratamientoData;
 import clinicaveterinaria.modelo.VisitaAtencion;
 import clinicaveterinaria.modelo.VisitaAtencionData;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Carlos
+
  */
 public class FormularioVisitas extends javax.swing.JFrame {
     private VisitaAtencionData visitadata;
     private Conexion conexion;
-
+    private ArrayList <Mascota> listamascota;
+    private DefaultTableModel model;
+    private ArrayList <VisitaAtencion> visitas;
+    private ArrayList <Tratamiento> listatratamientos;
     /**
      * Creates new form FormularioVisitas
      */
@@ -31,21 +40,97 @@ public class FormularioVisitas extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         try {
             conexion = new Conexion ("jdbc:mysql://localhost/clinica_veterinaria","root","");
+            MascotaData data = new MascotaData(conexion);
+            VisitaAtencionData Data = new VisitaAtencionData(conexion);
+            TratamientoData datas = new TratamientoData (conexion);
+            visitas = (ArrayList<VisitaAtencion>) Data.obtenerVisitaAtencion();
+            listamascota =  (ArrayList<Mascota>) data.obtenerMascota();
+            listatratamientos = (ArrayList<Tratamiento>) datas.obtenerTratamiento();
+            visitadata = new VisitaAtencionData(conexion);
+            
+         //   cargaDatos2();
+            model = new DefaultTableModel();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(FormularioVisitas.class.getName()).log(Level.SEVERE, null, ex);
         }
-        visitadata = new VisitaAtencionData(conexion);
+        cargaMascota();
+        cargaTratamiento();
+        armaCabeceraTabla2();
+            
+            
     }
-    
+    public void armaCabeceraTabla2(){
+    //borraFilasTabla2();
+        //Titulos de Columnas
+        ArrayList<Object> columnas=new ArrayList<Object>();
+       columnas.add("detalles");
+        columnas.add("fecha");
+        columnas.add("peso");
+        columnas.add("tipo-tratamiento");
+        
+        
+        
+       
+      
+        for(Object it:columnas){
+        
+            model.addColumn(it);
+        }
+        jTable1.setModel(model);
+  }
+      public void borraFilasTabla2(){
+
+            int a =model.getRowCount()-1;
+            System.out.println("Tabla "+a);
+            for(int i=a;i>=0;i--){
+                model.removeRow(i );
+                System.out.println("Tabla "+i);
+            }
+      }
     public void limpiar(){
-        jTextFieldIdvisita.setText("");
-        jtmascota.setText("");
-        jttratamiento.setText("");
+        
         jTextFieldFecha.setText("");
         jTextFieldPeso.setText("");
         jTextAreaDetalles.setText("");
     }
+ public void cargaMascota(){
+    //Carga las mascotas al ComboBox
+    
+    for(Mascota item:listamascota){
+            jComboBox1.addItem(item);
+    }
 
+}
+ public void cargaTratamiento(){
+    //Carga las mascotas al ComboBox
+    
+    for(Tratamiento item:listatratamientos){
+            jComboBox2.addItem(item);
+    }
+
+}
+ public void cargaDatos2(){
+            
+        
+        
+        
+            Mascota mas=(Mascota) jComboBox1.getSelectedItem();
+          String tipo="";
+      int id;
+        for(VisitaAtencion m: visitas){
+        
+
+            if(mas.getIdmascota()==m.getMascota().getIdmascota()){
+             id= m.getTratamiento().getIdtratamiento();
+                for (Tratamiento tratamiento: listatratamientos){
+                   if ( tratamiento.getIdtratamiento() == id){
+                       tipo =tratamiento.getTipo();
+                   }
+               }
+            model.addRow(new Object[]{m.getDetalles(),m.getFechaVisita(),m.getPeso(),tipo});
+            }           
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -62,8 +147,6 @@ public class FormularioVisitas extends javax.swing.JFrame {
         jLabelFecha = new javax.swing.JLabel();
         jLabelPeso = new javax.swing.JLabel();
         jLabelDetalles = new javax.swing.JLabel();
-        jtmascota = new javax.swing.JTextField();
-        jttratamiento = new javax.swing.JTextField();
         jTextFieldFecha = new javax.swing.JTextField();
         jTextFieldPeso = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -72,8 +155,12 @@ public class FormularioVisitas extends javax.swing.JFrame {
         jButtonLimpiar = new javax.swing.JButton();
         jButtonBorrar = new javax.swing.JButton();
         jButtonBuscar = new javax.swing.JButton();
-        jLabelIdvisita = new javax.swing.JLabel();
-        jTextFieldIdvisita = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -91,13 +178,6 @@ public class FormularioVisitas extends javax.swing.JFrame {
         jLabelPeso.setText("Peso actual");
 
         jLabelDetalles.setText("Detalles");
-
-        jttratamiento.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jttratamiento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jttratamientoActionPerformed(evt);
-            }
-        });
 
         jTextAreaDetalles.setColumns(20);
         jTextAreaDetalles.setRows(5);
@@ -131,7 +211,32 @@ public class FormularioVisitas extends javax.swing.JFrame {
             }
         });
 
-        jLabelIdvisita.setText("ID Visitas");
+        jButton1.setText("ver historial");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -141,72 +246,84 @@ public class FormularioVisitas extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(107, 107, 107))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelDetalles)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1)
-                        .addGap(46, 46, 46))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButtonGuardar)
-                        .addGap(37, 37, 37)
-                        .addComponent(jButtonBorrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                        .addComponent(jButtonBuscar)
-                        .addGap(36, 36, 36)
-                        .addComponent(jButtonLimpiar)
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelFecha)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelPeso)
-                        .addGap(33, 33, 33)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabelIdmascota)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabelIdtratamient)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(190, 190, 190)
+                                .addComponent(jLabelPeso)))
+                        .addGap(17, 17, 17)
                         .addComponent(jTextFieldPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabelFecha)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextFieldFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelIdvisita)
-                        .addGap(6, 6, 6)
-                        .addComponent(jTextFieldIdvisita, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelIdmascota)
-                        .addGap(12, 12, 12)
-                        .addComponent(jtmascota, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelIdtratamient)
-                        .addGap(18, 18, 18)
-                        .addComponent(jttratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButtonGuardar)
+                                .addGap(38, 38, 38)
+                                .addComponent(jButtonBorrar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonBuscar))
+                            .addComponent(jLabelDetalles))
+                        .addGap(279, 279, 279)
+                        .addComponent(jButton2)
+                        .addGap(112, 112, 112)
+                        .addComponent(jButtonLimpiar)))
+                .addGap(22, 22, 22))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelIdmascota)
                     .addComponent(jLabelIdtratamient)
-                    .addComponent(jtmascota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jttratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelIdvisita)
-                    .addComponent(jTextFieldIdvisita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelFecha)
-                    .addComponent(jLabelPeso)
                     .addComponent(jTextFieldFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelPeso)
                     .addComponent(jTextFieldPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelDetalles)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addComponent(jLabelDetalles)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonBorrar)
                     .addComponent(jButtonGuardar)
                     .addComponent(jButtonBuscar)
-                    .addComponent(jButtonLimpiar))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addComponent(jButtonLimpiar)
+                    .addComponent(jButton2))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -223,49 +340,66 @@ public class FormularioVisitas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
-        // TODO add your handling code here:
-        int mascota=Integer.parseInt(jtmascota.getText());        
-        int tratamiento=Integer.parseInt(jttratamiento.getText());
-        LocalDate fecha= LocalDate.parse(jTextFieldFecha.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        double peso=Double.parseDouble(jTextFieldPeso.getText());
-        String detalles=jTextAreaDetalles.getText();
-        Mascota mascotas = new Mascota();
-        mascotas.setIdmascota(mascota);
-        Tratamiento tratamientos = new Tratamiento ();
-        tratamientos.setIdtratamiento(tratamiento);
-        
-        VisitaAtencion visita = new VisitaAtencion(mascotas, tratamientos, detalles, fecha, peso);
-        visitadata.guardarVisita(visita);
-        jTextFieldIdvisita.setText(visita.getIdvisitaatencion()+""); 
-    }//GEN-LAST:event_jButtonGuardarActionPerformed
-
-    private void jttratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jttratamientoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jttratamientoActionPerformed
-
-    private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
-        // TODO add your handling code here:
-        int idvisitaatencion=Integer.parseInt(jTextFieldIdvisita.getText());
-        visitadata.borrarVistitaAtencion(idvisitaatencion);
-    }//GEN-LAST:event_jButtonBorrarActionPerformed
-
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
+       /*
         // TODO add your handling code here:
         int idvisitaatencion=Integer.parseInt(jTextFieldIdvisita.getText());
         VisitaAtencion visita = visitadata.buscarVisitaAtencion(idvisitaatencion);
-	if(visita!=null){
-	jTextFieldIdvisita.setText(visita.getIdvisitaatencion()+"");
-        jTextFieldFecha.setText(visita.getFechaVisita().toString());
-	jTextFieldPeso.setText(visita.getPeso()+"");
-	jTextAreaDetalles.setText(visita.getDetalles());
-        }
+        if(visita!=null){
+            jTextFieldIdvisita.setText(visita.getIdvisitaatencion()+"");
+            jTextFieldFecha.setText(visita.getFechaVisita().toString());
+            jTextFieldPeso.setText(visita.getPeso()+"");
+            jTextAreaDetalles.setText(visita.getDetalles());
+        }*/
     }//GEN-LAST:event_jButtonBuscarActionPerformed
+
+    private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
+    /*    // TODO add your handling code here:
+        int idvisitaatencion=Integer.parseInt(jTextFieldIdvisita.getText());
+        visitadata.borrarVistitaAtencion(idvisitaatencion);
+        */
+    }//GEN-LAST:event_jButtonBorrarActionPerformed
 
     private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed
         // TODO add your handling code here:
         limpiar();
     }//GEN-LAST:event_jButtonLimpiarActionPerformed
+
+    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
+        // TODO add your handling code here:
+       
+        LocalDate fecha= LocalDate.parse(jTextFieldFecha.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        double peso=Double.parseDouble(jTextFieldPeso.getText());
+        String detalles=jTextAreaDetalles.getText();
+        
+       
+       Mascota mas= (Mascota) jComboBox1.getSelectedItem();
+  // Mascota mascota = null;
+     
+    Tratamiento trat = (Tratamiento) jComboBox2.getSelectedItem();
+    
+   
+    
+    
+        VisitaAtencion visita = new VisitaAtencion();
+        visita.setMascota(mas);
+        visita.setDetalles(detalles);
+        visita.setFechaVisita(fecha);
+        visita.setPeso(peso);
+        visita.setTratamiento(trat);
+        visitadata.guardarVisita(visita);
+   
+
+    }//GEN-LAST:event_jButtonGuardarActionPerformed
+   
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+ borraFilasTabla2();
+        cargaDatos2();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+System.exit(WIDTH);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,24 +437,26 @@ public class FormularioVisitas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonBorrar;
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonGuardar;
     private javax.swing.JButton jButtonLimpiar;
+    private javax.swing.JComboBox<Mascota> jComboBox1;
+    private javax.swing.JComboBox<Tratamiento> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelDetalles;
     private javax.swing.JLabel jLabelFecha;
     private javax.swing.JLabel jLabelIdmascota;
     private javax.swing.JLabel jLabelIdtratamient;
-    private javax.swing.JLabel jLabelIdvisita;
     private javax.swing.JLabel jLabelPeso;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextAreaDetalles;
     private javax.swing.JTextField jTextFieldFecha;
-    private javax.swing.JTextField jTextFieldIdvisita;
     private javax.swing.JTextField jTextFieldPeso;
-    private javax.swing.JTextField jtmascota;
-    private javax.swing.JTextField jttratamiento;
     // End of variables declaration//GEN-END:variables
 }
