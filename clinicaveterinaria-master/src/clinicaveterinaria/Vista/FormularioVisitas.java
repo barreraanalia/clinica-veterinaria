@@ -160,7 +160,7 @@ public class FormularioVisitas extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
+        jButton2salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -231,10 +231,10 @@ public class FormularioVisitas extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButton2salir.setText("Salir");
+        jButton2salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton2salirActionPerformed(evt);
             }
         });
 
@@ -284,7 +284,7 @@ public class FormularioVisitas extends javax.swing.JFrame {
                                 .addComponent(jButtonBuscar))
                             .addComponent(jLabelDetalles))
                         .addGap(279, 279, 279)
-                        .addComponent(jButton2)
+                        .addComponent(jButton2salir)
                         .addGap(112, 112, 112)
                         .addComponent(jButtonLimpiar)))
                 .addGap(22, 22, 22))
@@ -322,7 +322,7 @@ public class FormularioVisitas extends javax.swing.JFrame {
                     .addComponent(jButtonGuardar)
                     .addComponent(jButtonBuscar)
                     .addComponent(jButtonLimpiar)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2salir))
                 .addContainerGap())
         );
 
@@ -397,9 +397,9 @@ public class FormularioVisitas extends javax.swing.JFrame {
         cargaDatos2();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton2salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2salirActionPerformed
 System.exit(WIDTH);        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButton2salirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -438,7 +438,7 @@ System.exit(WIDTH);        // TODO add your handling code here:
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton2salir;
     private javax.swing.JButton jButtonBorrar;
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonGuardar;
