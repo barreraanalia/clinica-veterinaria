@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Usuario
+ * @author barreraanalia
  */
 public class FormularioMascotas extends javax.swing.JFrame {
     
@@ -361,9 +361,9 @@ public class FormularioMascotas extends javax.swing.JFrame {
                 clientes = clientedata.obtenerCliente();
                 int busqueda= mascota.getcliente().getId();
                 for (Cliente cliente : clientes)
-                    if (cliente.getId() == busqueda){
-                      jtidcliente.setText  ( cliente.getNombreApellido());
-                    }
+                if (cliente.getId() == busqueda){
+                jtidcliente.setText  ( cliente.getNombreApellido());
+                }
              //   jtidcliente.setText(mascota.getcliente().getId()+"");
         }
                 
