@@ -120,7 +120,7 @@
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" pref="21" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jtId" min="-2" pref="136" max="-2" attributes="0"/>
+                          <Component id="jTextID" min="-2" pref="136" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jbbuscar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -210,7 +210,7 @@
                   <EmptySpace pref="16" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="jtId" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextID" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jbbuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -337,9 +337,9 @@
             <Property name="text" type="java.lang.String" value="CLIENTE"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtId">
+        <Component class="javax.swing.JTextField" name="jTextID">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtIdActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextIDActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jtespecie">

@@ -67,7 +67,7 @@ public class FormularioMascota extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jtId = new javax.swing.JTextField();
+        jTextID = new javax.swing.JTextField();
         jtespecie = new javax.swing.JTextField();
         jtraza = new javax.swing.JTextField();
         jtcolorPelo = new javax.swing.JTextField();
@@ -114,7 +114,7 @@ public class FormularioMascota extends javax.swing.JFrame {
 
         jLabel11.setText("jLabel11");
 
-        
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgenes/visor01.jpg"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 0));
@@ -150,9 +150,9 @@ public class FormularioMascota extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel13.setText("CLIENTE");
 
-        jtId.addActionListener(new java.awt.event.ActionListener() {
+        jTextID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtIdActionPerformed(evt);
+                jTextIDActionPerformed(evt);
             }
         });
 
@@ -227,7 +227,7 @@ public class FormularioMascota extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextID, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jbbuscar)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -296,7 +296,7 @@ public class FormularioMascota extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbbuscar))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -376,10 +376,10 @@ public class FormularioMascota extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtIdActionPerformed
+    private void jTextIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextIDActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jtIdActionPerformed
+    }//GEN-LAST:event_jTextIDActionPerformed
 
     private void jtespecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtespecieActionPerformed
         // TODO add your handling code here:
@@ -430,7 +430,7 @@ public class FormularioMascota extends javax.swing.JFrame {
        mascotaprueba.setFechaNacimiento(fechaNacimiento);
         mascotaData.guardarMascota(mascotaprueba);
        
-        jtId.setText(mascotaprueba.getIdmascota()+"");
+        jTextID.setText(mascotaprueba.getIdmascota()+"");
         
     
         
@@ -440,7 +440,7 @@ public class FormularioMascota extends javax.swing.JFrame {
 
     private void jbactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbactualizarActionPerformed
         // TODO add your handling code here:
-         if (jtId.getText()!=null){
+         if (jTextID.getText()!=null){
             String especie=jtespecie.getText();
             String raza=jtraza.getText();
             String colorPelo=jtcolorPelo.getText();
@@ -451,8 +451,12 @@ public class FormularioMascota extends javax.swing.JFrame {
             int cliente=Integer.parseInt(jtidcliente.getText());
             Cliente clientes = new Cliente();
             clientes.setId(cliente);
+            
             Mascota mascota=new Mascota(especie,raza,colorPelo,sexo,alias,fechaNacimiento,codigo,clientes);
+            mascota.setIdmascota(Integer.parseInt(jTextID.getText()));
         mascotaData.actualizarMascota(mascota);
+        
+        
 
          }
         
@@ -460,7 +464,7 @@ public class FormularioMascota extends javax.swing.JFrame {
 
     private void jblimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jblimpiarActionPerformed
         // TODO add your handling code here:
-    jtId.setText("");
+    jTextID.setText("");
     jtespecie.setText("");
     jtraza.setText("");
     jtalias.setText("");
@@ -477,17 +481,17 @@ public class FormularioMascota extends javax.swing.JFrame {
 
     private void jbborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbborrarActionPerformed
         // TODO add your handling code here:
-          int id=Integer.parseInt(jtId.getText());
+          int id=Integer.parseInt(jTextID.getText());
         mascotaData.borrarMascota(id);
     }//GEN-LAST:event_jbborrarActionPerformed
 
     private void jbbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbbuscarActionPerformed
         // TODO add your handling code here:
-        int id=Integer.parseInt(jtId.getText());
+        int id=Integer.parseInt(jTextID.getText());
         
         Mascota mascota= mascotaData.buscarMascota(id);
         if(mascota!=null){
-                jtId.setText(mascota.getIdmascota()+"");
+                jTextID.setText(mascota.getIdmascota()+"");
                 jtespecie.setText(mascota.getEspecie());
                 jtraza.setText(mascota.getRaza());
                 jtcolorPelo.setText(mascota.getColorPelo());
@@ -576,6 +580,7 @@ public class FormularioMascota extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JTextField jTextID;
     private javax.swing.JButton jbactualizar;
     private javax.swing.JButton jbborrar;
     private javax.swing.JButton jbbuscar;
@@ -583,7 +588,6 @@ public class FormularioMascota extends javax.swing.JFrame {
     private javax.swing.JButton jblimpiar;
     private javax.swing.JButton jblistmascotas;
     private javax.swing.JTextField jfechaNacimiento;
-    private javax.swing.JTextField jtId;
     private javax.swing.JTextField jtalias;
     private javax.swing.JTextField jtcodigo;
     private javax.swing.JTextField jtcolorPelo;
