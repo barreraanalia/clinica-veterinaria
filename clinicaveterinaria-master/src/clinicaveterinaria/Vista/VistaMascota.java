@@ -416,7 +416,7 @@ public void cargaMascota(){
     }//GEN-LAST:event_jbbuscarmascotaActionPerformed
 
     private void jbcrearmascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcrearmascotaActionPerformed
-     FormularioMascota formulariomascota = new FormularioMascota ();
+     FormularioMascotas formulariomascota = new FormularioMascotas ();
       
   formulariomascota.setVisible(true);
         VistaMascota.this.dispose(); 
