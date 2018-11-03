@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  *
  * @author barreraanalia
  */
-public class FormularioMascotas extends javax.swing.JFrame {
+public class FormularioMascota extends javax.swing.JFrame {
     
    private MascotaData mascotaData;
    private Conexion conexion;
@@ -29,7 +29,7 @@ public class FormularioMascotas extends javax.swing.JFrame {
     /**
      * Creates new form FormularioMascotas
      */
-    public FormularioMascotas() {
+    public FormularioMascota() {
         initComponents();
         
         try {
@@ -37,7 +37,7 @@ public class FormularioMascotas extends javax.swing.JFrame {
         mascotaData = new MascotaData(conexion);
         
     } catch (ClassNotFoundException ex) {
-        Logger.getLogger(FormularioMascotas.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(FormularioMascota.class.getName()).log(Level.SEVERE, null, ex);
     }
         
     }
@@ -339,7 +339,7 @@ public class FormularioMascotas extends javax.swing.JFrame {
         VistaMascota listamascota = new VistaMascota();
     
         listamascota.setVisible(true);
-     FormularioMascotas.this.dispose();
+     FormularioMascota.this.dispose();
     }//GEN-LAST:event_jButton6listarmascotaActionPerformed
 
     private void jButton5buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5buscarActionPerformed
@@ -473,20 +473,21 @@ public class FormularioMascotas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormularioMascotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormularioMascota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormularioMascotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormularioMascota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormularioMascotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormularioMascota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormularioMascotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormularioMascota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormularioMascotas().setVisible(true);
+                new FormularioMascota().setVisible(true);
             }
         });
     }
