@@ -379,9 +379,9 @@ public class FormularioMascota extends javax.swing.JFrame {
             String alias=jtalias.getText();
             LocalDate fechaNacimiento = LocalDate.parse(jtfechaNacimiento.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             String codigo=jtcodigo.getText();
-            int cliente=Integer.parseInt(jtidcliente.getText());
+            int Cliente=Integer.parseInt(jtidcliente.getText());
             Cliente clientes = new Cliente();
-            clientes.setId(cliente);
+            clientes.setId(Cliente);
             
             Mascota mascota=new Mascota(especie,raza,colorPelo,sexo,alias,fechaNacimiento,codigo,clientes);
             mascota.setIdmascota(Integer.parseInt(jTextID.getText()));
