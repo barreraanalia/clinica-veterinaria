@@ -50,7 +50,7 @@ public MascotaData (Conexion conexion) {
                 statement.setString(4, mascota.getSexo());
                 statement.setString(5, mascota.getAlias());
                 statement.setDouble(6, mascota.getPesoPromedio());
-                statement.setDate(7, Date.valueOf(mascota.getFechaNacimiento()));
+                statement.setDate(7, Date.valueOf(mascota.getFechanacimiento()));
                 statement.setInt(8, mascota.getCodigo());
                 statement.setInt(9,mascota.getcliente().getId());
             } catch (SQLException ex) {
@@ -99,7 +99,7 @@ public MascotaData (Conexion conexion) {
                     mascota.setSexo(resultSet.getString("sexo"));
                     mascota.setAlias(resultSet.getString("alias"));
                     mascota.setPesoPromedio(resultSet.getDouble("pesoPromedio"));
-                    mascota.setFechaNacimiento(resultSet.getDate("fechanacimiento").toLocalDate());
+                    mascota.setFechanacimiento(resultSet.getDate("fechanacimiento").toLocalDate());
                     mascota.setCodigo(resultSet.getInt("codigo"));
                     Cliente clientes = new Cliente ();
                clientes.setId(resultSet.getInt("idcliente"));
@@ -138,7 +138,7 @@ public MascotaData (Conexion conexion) {
                     mascota.setSexo(resultSet.getString("sexo"));
                     mascota.setAlias(resultSet.getString("alias"));
                     mascota.setPesoPromedio(resultSet.getDouble("pesoPromedio"));
-                    mascota.setFechaNacimiento(resultSet.getDate("fechanacimiento").toLocalDate());
+                    mascota.setFechanacimiento(resultSet.getDate("fechanacimiento").toLocalDate());
                     mascota.setCodigo(resultSet.getInt("codigo"));
                     Cliente clientes = new Cliente ();
                clientes.setId(resultSet.getInt("idcliente"));
@@ -197,7 +197,7 @@ public MascotaData (Conexion conexion) {
                statement.setString(4, mascota.getSexo());
                statement.setString(5, mascota.getAlias());
                statement.setDouble(6,mascota.getPesoPromedio());
-               statement.setDate(7, Date.valueOf(mascota.getFechaNacimiento()));
+               statement.setDate(7, Date.valueOf(mascota.getFechanacimiento()));
                statement.setInt(8, mascota.getCodigo());
                statement.setInt(9,mascota.getcliente().getId());
                statement.executeUpdate();
@@ -231,7 +231,7 @@ public MascotaData (Conexion conexion) {
                 mascota.setSexo(resultSet.getString("sexo"));
                 mascota.setAlias(resultSet.getString("alias"));
                 mascota.setPesoPromedio(resultSet.getDouble("pesoPromedio"));
-                mascota.setFechaNacimiento(resultSet.getDate("fechanacimiento").toLocalDate());
+                mascota.setFechanacimiento(resultSet.getDate("fechanacimiento").toLocalDate());
                 mascota.setCodigo(resultSet.getInt("codigo"));
                 
                Cliente clientes = new Cliente ();

@@ -144,7 +144,7 @@ public void cargaMascota(){
         for(Mascota m:listaMascota){
         
     
-         modelo.addRow(new Object[]{m.getEspecie(),m.getRaza(),m.getColorPelo(),m.getSexo(),m.getAlias(),m.getAlias(),m.getFechaNacimiento(),m.getCodigo()});
+         modelo.addRow(new Object[]{m.getEspecie(),m.getRaza(),m.getColorPelo(),m.getSexo(),m.getAlias(),m.getAlias(),m.getFechanacimiento(),m.getCodigo()});
                      
         }
     }   
@@ -403,7 +403,7 @@ public void cargaMascota(){
                 
                 if (campo.equals(m.getAlias())   ){
                     
-                    modelo.addRow(new Object[]{m.getEspecie(),m.getRaza(),m.getColorPelo(),m.getSexo(),m.getAlias(),m.getFechaNacimiento(),m.getCodigo(),m.getcliente().getId()});
+                    modelo.addRow(new Object[]{m.getEspecie(),m.getRaza(),m.getColorPelo(),m.getSexo(),m.getAlias(),m.getFechanacimiento(),m.getCodigo(),m.getcliente().getId()});
             busqueda = m.getIdmascota();
                     
            

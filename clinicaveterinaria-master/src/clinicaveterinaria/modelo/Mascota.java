@@ -21,19 +21,19 @@ public class Mascota {
     private String sexo;
     private String alias;
     private double pesoPromedio;
-    private LocalDate fechaNacimiento;
+    private LocalDate fechanacimiento;
     private int codigo;
     private Cliente cliente;
     private int idmascota;
 
-    public Mascota(String especie, String raza, String colorPelo, String sexo, String alias, double pesoPromedio, LocalDate fechaNacimiento, int codigo, Cliente cliente, int idmascota) {
+    public Mascota(String especie, String raza, String colorPelo, String sexo, String alias, double pesoPromedio, LocalDate fechanacimiento, int codigo, Cliente cliente, int idmascota) {
         this.especie = especie;
         this.raza = raza;
         this.colorPelo = colorPelo;
         this.sexo = sexo;
         this.alias = alias;
         this.pesoPromedio = pesoPromedio;
-        this.fechaNacimiento = fechaNacimiento;
+        this.fechanacimiento = fechanacimiento;
         this.codigo = codigo;
         this.cliente = cliente;
         this.idmascota = idmascota;
@@ -50,7 +50,7 @@ public class Mascota {
         this.sexo = sexo;
         this.alias = alias;
         this.pesoPromedio = pesoPromedio;
-        this.fechaNacimiento = fechaNacimiento;
+        this.fechanacimiento = fechanacimiento;
         
         this.cliente = cliente;
         this.idmascota = idmascota;
@@ -110,13 +110,15 @@ public class Mascota {
         this.pesoPromedio = pesoPromedio;
     }
 
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
+    public LocalDate getFechanacimiento() {
+        return fechanacimiento;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setFechanacimiento(LocalDate fechanacimiento) {
+        this.fechanacimiento = fechanacimiento;
     }
+
+    
 
     public int getCodigo() {
         return codigo;

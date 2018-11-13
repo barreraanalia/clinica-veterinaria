@@ -75,7 +75,7 @@ public class FormularioMascota extends javax.swing.JFrame {
         jtcolorPelo = new javax.swing.JTextField();
         jtsexo = new javax.swing.JTextField();
         jtalias = new javax.swing.JTextField();
-        jtfechaNacimiento = new javax.swing.JTextField();
+        jtfechanacimiento = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jtcodigo = new javax.swing.JTextField();
@@ -210,11 +210,6 @@ public class FormularioMascota extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jidCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -225,7 +220,12 @@ public class FormularioMascota extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton4limpiar)
                         .addGap(54, 54, 54)
-                        .addComponent(jButton5salir)))
+                        .addComponent(jButton5salir))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,11 +242,8 @@ public class FormularioMascota extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jtfechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jtalias, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jtfechanacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jtalias, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jtraza, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -273,7 +270,9 @@ public class FormularioMascota extends javax.swing.JFrame {
                         .addComponent(jButton5buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(233, 233, 233)
-                        .addComponent(jButton6listarmascota, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6)
+                            .addComponent(jButton6listarmascota, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -293,15 +292,15 @@ public class FormularioMascota extends javax.swing.JFrame {
                 .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel6)
                     .addComponent(jtespecie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtalias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtalias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel7)
                     .addComponent(jtraza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfechanacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -360,7 +359,7 @@ public class FormularioMascota extends javax.swing.JFrame {
                 jtcolorPelo.setText(mascota.getColorPelo());
                 jtsexo.setText(mascota.getSexo());
                 jtalias.setText(mascota.getAlias());
-                jtfechaNacimiento.setText(mascota.getFechaNacimiento().toString());
+                jtfechanacimiento.setText(mascota.getFechanacimiento().toString());
                 jtcodigo.setText(mascota.getCodigo()+"");
                 List <Cliente> clientes = new ArrayList <>();
                 ClienteData clientedata= new ClienteData(conexion);
@@ -383,7 +382,7 @@ public class FormularioMascota extends javax.swing.JFrame {
             String colorPelo=jtcolorPelo.getText();
             String sexo=jtsexo.getText();
             String alias=jtalias.getText();
-            LocalDate fechaNacimiento = LocalDate.parse(jtfechaNacimiento.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            LocalDate fechaNacimiento = LocalDate.parse(jtfechanacimiento.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             String codigo=jtcodigo.getText();
             int Cliente=Integer.parseInt(jtidcliente.getText());
             Cliente clientes = new Cliente();
@@ -406,7 +405,7 @@ public class FormularioMascota extends javax.swing.JFrame {
         String colorPelo=jtcolorPelo.getText();
         String sexo=jtsexo.getText();
         String alias=jtalias.getText();
-        LocalDate fechaNacimiento = LocalDate.parse(jtfechaNacimiento.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        LocalDate fechanacimiento = LocalDate.parse(jtfechanacimiento.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         int codigo=Integer.parseInt(jtcodigo.getText());
         String cliente=(jtidcliente.getText());
         Cliente clientito = null;
@@ -429,7 +428,7 @@ public class FormularioMascota extends javax.swing.JFrame {
     mascotaprueba.setCodigo(codigo);
     mascotaprueba.setcliente(resultado.get(0));
     
-       mascotaprueba.setFechaNacimiento(fechaNacimiento);
+       mascotaprueba.setFechanacimiento(fechanacimiento);
         mascotaData.guardarMascota(mascotaprueba);
        
         jTextID.setText(mascotaprueba.getIdmascota()+"");
@@ -446,7 +445,7 @@ public class FormularioMascota extends javax.swing.JFrame {
     jtalias.setText("");
      jtcolorPelo.setText("");
     jtsexo.setText("");
-    jtfechaNacimiento.setText("");
+    jtfechanacimiento.setText("");
     jtcodigo.setText("");
     jtidcliente.setText("");
     }//GEN-LAST:event_jButton4limpiarActionPerformed
@@ -528,7 +527,7 @@ public class FormularioMascota extends javax.swing.JFrame {
     private javax.swing.JTextField jtcodigo;
     private javax.swing.JTextField jtcolorPelo;
     private javax.swing.JTextField jtespecie;
-    private javax.swing.JTextField jtfechaNacimiento;
+    private javax.swing.JTextField jtfechanacimiento;
     private javax.swing.JTextField jtidcliente;
     private javax.swing.JTextField jtraza;
     private javax.swing.JTextField jtsexo;
