@@ -197,6 +197,12 @@ public class FormularioMascota extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel11.setText("CODIGO");
 
+        jtidcliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtidclienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -455,6 +461,10 @@ public class FormularioMascota extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(WIDTH); 
     }//GEN-LAST:event_jButton5salirActionPerformed
+
+    private void jtidclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtidclienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtidclienteActionPerformed
 
     /**
      * @param args the command line arguments
