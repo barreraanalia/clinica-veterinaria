@@ -119,7 +119,7 @@ public void cargaMascota(){
         columnas.add("colorPelo");
         columnas.add("sexo");
         columnas.add("alias");
-        columnas.add("fechaNacimiento");
+        columnas.add("fechanacimiento");
         columnas.add("codigo");
       
         for(Object it:columnas){
