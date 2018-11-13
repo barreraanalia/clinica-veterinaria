@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author erecem
+ * @author barreraanalia
  */
 public class MascotaData {
     private Connection connection = null;
