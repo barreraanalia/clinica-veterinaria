@@ -114,7 +114,7 @@ public class VisitaAtencionData {
     
         try {
             
-            String sql = "UPDATE visitaatencion SET idmascota = ?, idtratamiento = ? , detalles =? fecha=?, peso=? WHERE idvisitaatencion = ?;";
+            String sql = "UPDATE FROM visitaatencion SET idmascota = ?, idtratamiento = ? , detalles =? fecha=?, peso=? WHERE idvisitaatencion = ?;";
 
             try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                
@@ -152,7 +152,7 @@ public class VisitaAtencionData {
                     visitaatencion.setPeso(resultSet.getDouble("peso"));
                                    Mascota mascota = new Mascota();
                     mascota.setIdmascota(resultSet.getInt("idmascota"));
-                    Tratamiento tratamiento = new Tratamiento ();
+                    
                     tratamiento.setIdtratamiento(resultSet.getInt("idtratamiento"));
                    visitaatencion.setMascota(mascota);
                    visitaatencion.setTratamiento(tratamiento);
