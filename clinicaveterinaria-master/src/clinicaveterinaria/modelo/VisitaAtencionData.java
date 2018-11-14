@@ -75,7 +75,7 @@ public class VisitaAtencionData {
                     visitaatencion.setPeso(resultSet.getDouble("peso"));
                     Mascota mascota = new Mascota();
                     mascota.setIdmascota(resultSet.getInt("idmascota"));
-                    
+                    Tratamiento tratamiento = new Tratamiento ();
                     tratamiento.setIdtratamiento(resultSet.getInt("idtratamiento"));
                    
                    visitaatencion.setMascota(mascota);
@@ -152,7 +152,7 @@ public class VisitaAtencionData {
                     visitaatencion.setPeso(resultSet.getDouble("peso"));
                                    Mascota mascota = new Mascota();
                     mascota.setIdmascota(resultSet.getInt("idmascota"));
-                    
+                    Tratamiento tratamiento = new Tratamiento ();
                     tratamiento.setIdtratamiento(resultSet.getInt("idtratamiento"));
                    visitaatencion.setMascota(mascota);
                    visitaatencion.setTratamiento(tratamiento);

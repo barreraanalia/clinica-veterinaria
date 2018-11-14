@@ -372,12 +372,10 @@ public class FormularioVisitas extends javax.swing.JFrame {
         double peso=Double.parseDouble(jTextFieldPeso.getText());
         String detalles=jTextAreaDetalles.getText();
         
-       
-      
-    
-   
-    
-    
+       Mascota mas= (Mascota) jComboBox1.getSelectedItem();
+  // Mascota mascota = null;
+     
+    Tratamiento trat = (Tratamiento) jComboBox2.getSelectedItem();
         VisitaAtencion visita = new VisitaAtencion();
         visita.setMascota(mas);
         visita.setDetalles(detalles);
