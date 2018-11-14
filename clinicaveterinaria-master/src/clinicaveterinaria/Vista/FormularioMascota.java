@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,10 +26,7 @@ public class FormularioMascota extends javax.swing.JFrame {
     
    private MascotaData mascotaData;
    private Conexion conexion;
-
-    /**
-     * Creates new form FormularioMascotas
-     */
+   
     public FormularioMascota() {
         initComponents();
         
@@ -377,20 +375,30 @@ public class FormularioMascota extends javax.swing.JFrame {
     private void jButton2actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2actualizarActionPerformed
         // TODO add your handling code here:
         if (jTextID.getText()!=null){
+            int Idmascota = Integer.parseInt(jTextID.getText());
             String especie=jtespecie.getText();
             String raza=jtraza.getText();
             String colorPelo=jtcolorPelo.getText();
             String sexo=jtsexo.getText();
             String alias=jtalias.getText();
-            LocalDate fechaNacimiento = LocalDate.parse(jtfechanacimiento.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            String codigo=jtcodigo.getText();
+            LocalDate fechanacimiento = LocalDate.parse(jtfechanacimiento.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            int codigo=Integer.parseInt(jtcodigo.getText());
             int Cliente=Integer.parseInt(jtidcliente.getText());
             Cliente clientes = new Cliente();
             clientes.setId(Cliente);
             
-            Mascota mascota=new Mascota(especie,raza,colorPelo,sexo,alias,fechaNacimiento,codigo,clientes);
+            Mascota mascota=new Mascota();
+            mascota.setEspecie(especie);
+            mascota.setRaza(raza);
+            mascota.setColorPelo(colorPelo);
+            mascota.setSexo(sexo);
+            mascota.setAlias(alias);
+            mascota.setFechanacimiento(fechanacimiento);
+            mascota.setCodigo(codigo);
+            mascota.setCliente(clientes);
             mascota.setIdmascota(Integer.parseInt(jTextID.getText()));
         mascotaData.actualizarMascota(mascota);
+       
         }
     }//GEN-LAST:event_jButton2actualizarActionPerformed
 

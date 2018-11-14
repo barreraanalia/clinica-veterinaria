@@ -51,9 +51,16 @@ public class Mascota {
         this.alias = alias;
         this.pesoPromedio = pesoPromedio;
         this.fechanacimiento = fechanacimiento;
-        
         this.cliente = cliente;
         this.idmascota = idmascota;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     

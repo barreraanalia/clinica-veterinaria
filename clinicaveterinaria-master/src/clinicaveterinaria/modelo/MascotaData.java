@@ -188,7 +188,7 @@ public MascotaData (Conexion conexion) {
     
         try {
             
-            String sql = "UPDATE mascota SET especie = ? ,raza = ? , colorPelo = ?, sexo = ?, alias = ? ,pesoPromedio= ?,  fechanacimiento = ? , codigo =?, Idcliente =? ;";
+            String sql = "UPDATE mascota SET especie = ? ,raza = ? , colorPelo = ?, sexo = ?, alias = ? ,pesoPromedio= ?,  fechanacimiento = ? , codigo =?,WHERE idMascota=? ;";
 
             try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                statement.setString(1, mascota.getEspecie());
@@ -199,16 +199,32 @@ public MascotaData (Conexion conexion) {
                statement.setDouble(6,mascota.getPesoPromedio());
                statement.setDate(7, Date.valueOf(mascota.getFechanacimiento()));
                statement.setInt(8, mascota.getCodigo());
-               statement.setInt(9,mascota.getcliente().getId());
+               statement.setInt(9,mascota.getIdmascota());
                statement.executeUpdate();
                statement.close();
   
             }
     
         } catch (SQLException ex) {
-            System.out.println("Error al insertar un mascota: " + ex.getMessage());
+            System.out.println("Error al actualizar una mascota: " + ex.getMessage());
         }
     
+    }
+    public void actualizarPeso (Mascota mascota){
+    
+        try {  
+            String sql = "UPDATE mascota SET pesoMedio = ? WHERE idMascota = ?;";
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+          
+            statement.setDouble(1, mascota.getPesoPromedio());
+            statement.setInt(2, mascota.getIdmascota());
+ 
+            statement.executeUpdate();
+            statement.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al actualizar datos de mascota: " + ex.getMessage());
+        }
     }
     
      public Mascota buscarMascota(int id){
