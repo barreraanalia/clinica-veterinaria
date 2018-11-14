@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VistaTratamiento extends javax.swing.JFrame {
     private DefaultTableModel modelo;
-    private ArrayList<Tratamiento> listaTratamientos;
+    private ArrayList<Cliente> listaTratamientos;
     VistaTratamiento listamascota;
     private DefaultListModel model;
     int busqueda = 0;
@@ -77,7 +77,7 @@ public class VistaTratamiento extends javax.swing.JFrame {
         public void cargaDatos(){
          
         
-        for(Tratamiento m:listaTratamientos){
+        for(Cliente m:listaTratamientos){
         
             modelo.addRow(new Object[]{m.getTipo(), m.getCodigoTratamiento(), m.getDescripcion(), m.getActivo()});
                      
