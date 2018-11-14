@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 
 public class Conexion {
-    private String url;
+    private String urls;
     private String usuario;
     private String password;
 
