@@ -55,6 +55,14 @@ public class Mascota {
         this.idmascota = idmascota;
     }
 
+    public Mascota(String especie, String raza, String colorPelo, String sexo, String alias, LocalDate fechanacimiento, int codigo, String cliente) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Mascota(String especie, String raza, String colorPelo, String sexo, String alias, LocalDate fechanacimiento, int codigo, int cliente) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public Cliente getCliente() {
         return cliente;
     }

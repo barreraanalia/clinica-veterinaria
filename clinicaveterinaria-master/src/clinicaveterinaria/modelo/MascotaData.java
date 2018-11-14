@@ -188,7 +188,7 @@ public MascotaData (Conexion conexion) {
     
         try {
             
-            String sql = "UPDATE mascota SET especie = ? ,raza = ? , colorPelo = ?, sexo = ?, alias = ? ,pesoPromedio= ?,  fechanacimiento = ? , codigo =?,WHERE idMascota=? ;";
+            String sql = "UPDATE mascota SET especie = ? ,raza = ? , colorPelo = ?, sexo = ?, alias = ? ,pesoPromedio= ?,  fechanacimiento = ? , codigo =? WHERE idMascota=? ;";
 
             try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                statement.setString(1, mascota.getEspecie());
@@ -200,6 +200,7 @@ public MascotaData (Conexion conexion) {
                statement.setDate(7, Date.valueOf(mascota.getFechanacimiento()));
                statement.setInt(8, mascota.getCodigo());
                statement.setInt(9,mascota.getIdmascota());
+              
                statement.executeUpdate();
                statement.close();
   
